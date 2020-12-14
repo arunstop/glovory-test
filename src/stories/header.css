@@ -1,0 +1,56 @@
+.navbar{
+  box-shadow: 1px 0 20px 0 rgba(0, 0, 0, 0.2);
+  position: fixed;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.wrapper {
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 16px 40px;
+  display: flex;
+  justify-content: flex-start;
+  text-align: start;
+  align-items: center;
+  max-height: 48px;
+}
+
+.logo{
+  height:40px;
+}
+
+.btn-search {
+  margin-left: 60px;
+  height: 48px;
+  max-width: 620px;
+  width: 100%;
+  margin-bottom: 0px;
+  padding-left: 54px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background-color: #f7f9fc;
+  background-image: url("https://assets.website-files.com/5fafb178b3236f251c2ec605/5faffd2656d9a3d620bb1569_search.svg");
+  background-position: 18px 50%;
+  background-size: auto;
+  background-repeat: no-repeat;
+  font-size: 0.9375em;
+  line-height: 1.5em;
+}
+
+svg {
+  display: inline-block;
+  vertical-align: top;
+}
+
+h1 {
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 1;
+  margin: 6px 0 6px 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+button + button {
+  margin-left: 10px;
+}

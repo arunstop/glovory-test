@@ -1,19 +1,21 @@
 <template>
   <div id="app">
-    <img alt="KEKW" src="https://assets.website-files.com/5fafb178b3236f251c2ec605/5fafe519c3163b6fd26dd449_logo-color.svg" width="180">
-    <HelloWorld msg="Welcome to Your Vue.js App" kekw="This is Risitas"/>
+    <Header user="Arunstop" />
+    <HelloWorld msg="Welcome to Your Vue.js App" kekw="This is Risitas" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from "./components/HelloWorld.vue";
+import Header from "./stories/Header.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    HelloWorld,
+    Header
   }
-}
+};
 </script>
 
 <style>
@@ -23,6 +25,13 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+body {
+  margin: 0px;
+  font-family: Rubik, sans-serif;
+  color: #222b45;
+  font-size: 16px;
+  line-height: 24px;
 }
 </style>

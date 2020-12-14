@@ -1,0 +1,8 @@
+.g-left{
+    float: left;
+}
+
+.g-right{
+   float: right;
+   margin-left: auto;
+}

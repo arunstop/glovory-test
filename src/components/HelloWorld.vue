@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="content">
     <h1>{{ msg }}</h1>
     <p>
       {{kekw}}
@@ -82,6 +82,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.content{
+  padding-top: 120px;
+}
 h3 {
   margin: 40px 0 0;
 }
