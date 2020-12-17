@@ -1,11 +1,12 @@
-.navbar{
+.c-navbar{
   box-shadow: 1px 0 20px 0 rgba(0, 0, 0, 0.2);
   position: fixed;
   width: 100%;
   background-color: #ffffff;
+  top: 0;
 }
 
-.wrapper {
+.c-wrapper {
   font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   margin: 16px 40px;
   display: flex;

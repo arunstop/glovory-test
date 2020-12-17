@@ -7,7 +7,7 @@
       @onCreateAccount="onCreateAccount"
     />
 
-    <section>
+    <section class="content">
       <h2>Pages in Storybook</h2>
       <p>
         We recommend building UIs with a
@@ -86,3 +86,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.content{
+  margin-top: 120px;
+}
+</style>

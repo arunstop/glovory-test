@@ -1,6 +1,6 @@
 <template>
-    <div class="navbar">
-      <div class="wrapper">
+    <div class="c-navbar">
+      <div class="c-wrapper">
         <img
           class="logo"
           src="https://assets.website-files.com/5fafb178b3236f251c2ec605/5fafe519c3163b6fd26dd449_logo-color.svg"
