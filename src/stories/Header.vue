@@ -14,13 +14,13 @@
           placeholder="Search products"
           id="Search"
         />
-        <div class="g-right">
-          <my-button
+        <div class="g-right row">
+          <!-- <my-button
             size="small"
             @onClick="onLogout"
             label="Log out"
             v-if="user"
-          />
+          /> -->
           <my-button
             size="small"
             @onClick="onLogin"
@@ -34,6 +34,8 @@
             label="Sign up"
             v-if="!user"
           />
+          <my-sidebar/>
+          <c-icon-button icon="person" icon-hovered="person-fill"/>
         </div>
       </div>
     </div>
@@ -43,11 +45,13 @@
 import "./global.css";
 import "./header.css";
 import MyButton from "./Button.vue";
+import MySidebar from "./Sidebar.vue";
+import CIconButton from "./IconButton.vue";
 
 export default {
   name: "my-header",
 
-  components: { MyButton },
+  components: { MyButton,MySidebar,CIconButton },
 
   props: {
     user: {
@@ -64,7 +68,7 @@ export default {
     },
     onCreateAccount() {
       this.$emit("onCreateAccount");
-    }
+    },
   }
 };
 </script>

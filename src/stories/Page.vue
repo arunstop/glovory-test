@@ -15,8 +15,7 @@
         />
       </b-row>
     </div>
-      <MyFooter/>
-    
+    <MyFooter />
   </div>
 </template>
 
@@ -30,7 +29,7 @@ import productJSON from "../assets/products.json";
 export default {
   name: "my-page",
 
-  components: { MyHeader, Card, MyFooter},
+  components: { MyHeader, Card, MyFooter },
 
   props: {
     user: {
@@ -59,11 +58,11 @@ export default {
 </script>
 
 <style scoped>
-.main-wrapper{
+.main-wrapper {
   min-height: 100vh;
   justify-content: space-between;
   width: 100%;
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 

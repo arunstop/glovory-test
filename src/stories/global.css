@@ -3,6 +3,6 @@
 }
 
 .g-right{
-   float: right;
-   margin-left: auto;
+   float: right !important;
+   margin-left: auto !important;
 }
