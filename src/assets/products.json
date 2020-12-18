@@ -1,0 +1,53 @@
+{
+  "msg": "Success",
+  "data": [
+    {
+      "id": "1",
+      "src": "https://assets.website-files.com/5fafb178b3236f251c2ec605/5fb0e546bd22a06c5c340cf5_qtela.png",
+      "name": "Qtela Tempe Cabai Rawit 55g",
+      "price": "7700",
+      "priceLabel": "Rp 7.700",
+      "qty": "10"
+    },
+    {
+      "id": "2",
+      "src": "https://assets.website-files.com/5fafb178b3236f251c2ec605/5fb0f27c5c479edb32852f7a_Susu%20fernleaf.png",
+      "name": "Qtela Tempe Cabai",
+      "price": "7700",
+      "priceLabel": "Rp 7.700",
+      "qty": "10"
+    },
+    {
+      "id": "3",
+      "src": "https://assets.website-files.com/5fafb178b3236f251c2ec605/5fb0e546bd22a06c5c340cf5_qtela.png",
+      "name": "Qtela Tempe Cabai Rawit 55g",
+      "price": "7700",
+      "priceLabel": "Rp 7.700",
+      "qty": "10"
+    },
+    {
+      "id": "4",
+      "src": "https://assets.website-files.com/5fafb178b3236f251c2ec605/5fb0f27c5c479edb32852f7a_Susu%20fernleaf.png",
+      "name": "Qtela Tempe Cabai Raw",
+      "price": "7700",
+      "priceLabel": "Rp 7.700",
+      "qty": "10"
+    },
+    {
+      "id": "5",
+      "src": "https://assets.website-files.com/5fafb178b3236f251c2ec605/5fb0e546bd22a06c5c340cf5_qtela.png",
+      "name": "Qtela Tempe Cabai Rawit 55g",
+      "price": "7700",
+      "priceLabel": "Rp 7.700",
+      "qty": "10"
+    },
+    {
+      "id": "6",
+      "src": "https://assets.website-files.com/5fafb178b3236f251c2ec605/5fb0f27c5c479edb32852f7a_Susu%20fernleaf.png",
+      "name": "Qtela Tempe Cabai Ra",
+      "price": "7700",
+      "priceLabel": "Rp 7.700",
+      "qty": "10"
+    }
+  ]
+}

@@ -4,6 +4,7 @@
   width: 100%;
   background-color: #ffffff;
   top: 0;
+  z-index: 1000;
 }
 
 .c-wrapper {

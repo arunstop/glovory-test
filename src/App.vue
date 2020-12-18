@@ -1,35 +1,35 @@
 <template>
   <div id="app">
     <Page user="Arunstop" />
-    <HelloWorld msg="Welcome to Your Vue.js App" kekw="This is Risitas"/>
-    <Alert />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+// import HelloWorld from "./components/HelloWorld.vue";
 import Page from "./stories/Page.vue";
-import Alert from "./components/Alert.vue";
-
+// import Alert from "./stories/Alert.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
-    Page,
-    Alert
+    // HelloWorld,
+    Page
+    // Alert
   }
 };
 </script>
 
 <style>
-
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  /* width: 100%;
+  min-height: 100vh; 100 viewport height */
+  background-color: #f5f6f8;
+  display: flex;
 }
 
 body {
@@ -39,5 +39,4 @@ body {
   font-size: 16px;
   line-height: 24px;
 }
-
 </style>
