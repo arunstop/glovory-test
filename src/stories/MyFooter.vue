@@ -1,7 +1,7 @@
 <template>
   <div class="c-footer">
     <div class="c-footer-wrapper">
-      © GlovoryMart - All rights reserved.
+      © GlovoryMart - All rights reserved.......
     </div>
   </div>
 </template>
