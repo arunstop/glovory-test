@@ -18,9 +18,7 @@ export default {
   background-color: #222b45;
 }
 .c-footer-wrapper {
-  font-family: Rubik, sans-serif;
   color: #ffffff;
-  font-weight: bold;
   text-align: left;
   padding-left: 40px;
   padding-right: 40px;

@@ -52,4 +52,12 @@ body {
   border: 0px !important;
 }
 
+.c-text-primary{
+  color: #d63b30 !important;
+}
+
+.c-fw500{
+  font-weight: 500;
+}
+
 </style>

@@ -3,11 +3,11 @@
     <div class="c-product-thumbnail">
       <img class="c-product-img" :src="productData.src" />
     </div>
-    <div class="c-product-desc">
-      <p><b>{{ productData.name }}</b></p>
-      <p><b>{{ productData.priceLabel }}</b></p>
+    <div class="c-product-desc c-fw500">
+      <p>{{ productData.name }}</p>
+      <p class="c-text-primary">{{ productData.priceLabel }}</p>
     </div>
-    <b-button variant="danger"><b>Add to cart</b></b-button>
+    <b-button class="c-c-primary c-btn-round c-fw500">Add to cart</b-button>
   </div>
 </template>
 
@@ -20,3 +20,11 @@ export default {
   }
 };
 </script>
+<style scoped>
+.c-card:hover {
+  box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.2);
+  -webkit-transform: translate(0px, -5px);
+  -ms-transform: translate(0px, -5px);
+  transform: translate(0px, -5px);
+}
+</style>
