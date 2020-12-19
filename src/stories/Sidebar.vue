@@ -12,30 +12,33 @@
       right
       shadow
       no-header
+      width="360px"
     >
       <template #default="{hide}">
-        <div>
+        <div class="d-flex flex-column">
           <div class="c-sidebar-header row p-3">
-            <b-button type="button" class="close" variant="light" aria-label="Close" @click="hide">
+            <b-button
+              type="button"
+              class="close"
+              variant="light"
+              aria-label="Close"
+              @click="hide"
+            >
               <span aria-hidden="true">&times;</span>
             </b-button>
             <b class="mx-3">Cart</b>
           </div>
           <div class="c-sidebar-content column p-3">
-            <c-cart-item/>
-
-            <nav class="mb-3">
-              <b-nav vertical>
-                <b-nav-item active @click="hide">Active</b-nav-item>
-                <b-nav-item href="#link-1" @click="hide">Link</b-nav-item>
-                <b-nav-item href="#link-2" @click="hide"
-                  >Another Link</b-nav-item
-                >
-              </b-nav>
-            </nav>
-            <b-button variant="primary" block @click="hide"
-              >Close Sidebar</b-button
-            >
+            <c-cart-item />
+            <c-cart-item />
+            <c-cart-item />
+            <c-cart-item />
+          </div>
+          <div class="c-sidebar-footer mt-auto p-3">
+            <b-button class="c-btn-round mt-auto d-flex justify-content-between p-3 c-c-primary" variant="danger" block @click="hide">
+              <span class="my-auto">Purchase Order</span>
+              <h6 class="font-weight-bold my-auto">Rp 28.000</h6>
+            </b-button>
           </div>
         </div>
       </template>
@@ -49,7 +52,7 @@ import CCartItem from "./CartItem.vue";
 
 export default {
   name: "c-sidebar",
-  components: { CIconButton,CCartItem},
+  components: { CIconButton, CCartItem },
   data() {
     return {
       isHovered: false
@@ -67,7 +70,7 @@ export default {
 .row {
   margin: 0px !important;
 }
-.c-sidebar-header{
-    border-bottom: 1px solid #e4e9f2;
+.c-sidebar-header {
+  border-bottom: 1px solid #e4e9f2;
 }
 </style>

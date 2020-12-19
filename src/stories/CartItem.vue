@@ -8,7 +8,7 @@
     </div>
     <div class="c-cart-center mr-auto">
       <div class="d-block">
-        <span>FRISIAN FLAG UHT Purefarm Cokelat 225 ml</span>
+        <p >FRISIAN FLAG UHT Purefarm Cokelat 225 ml</p>
         <div class="d-flex mt-3 ">
           <b-button class="c-btn-qty" variant="outline-secondary">-</b-button>
           <b class="c-item-qty my-auto">1</b>
@@ -16,9 +16,11 @@
         </div>
       </div>
     </div>
-    <div class="c-cart-right col justify-content-end ml-auto">
-      <b-icon class="h4 f-right" icon="bag-check" />
-      <span>Rp 7.000</span>
+    <div class="c-cart-right d-flex flex-column ml-auto">
+      <b-button class="ml-auto" variant="light">
+        <b-icon icon="trash-fill" style="color:#c5cee0;" />
+      </b-button>
+      <p class="c-item-price mt-auto text-block font-weight-bold">Rp 7.000</p>
     </div>
   </div>
 </template>
@@ -33,6 +35,7 @@ export default {
 }
 
 .c-cart-left {
+  display: block;
 }
 
 .c-cart-img {
@@ -57,6 +60,8 @@ export default {
   font-weight: bold;
 }
 .c-cart-right {
+  width: 50%;
+  margin-left: 20px !important;
   float: right !important;
 }
 </style>
