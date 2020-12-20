@@ -7,29 +7,29 @@
       @onCreateAccount="onCreateAccount"
     />
     <div class="content-wrapper">
-      <b-row class="w-layout-grid ">
-        <Card
+      <b-row class="w-layout-grid m-auto">
+        <c-card
           v-for="product in productList.data"
           :key="product.id"
           :productData="product"
         />
       </b-row>
     </div>
-    <MyFooter />
+    <c-footer />
   </div>
 </template>
 
 <script>
 import "./page.css";
 import MyHeader from "./Header.vue";
-import MyFooter from "./MyFooter.vue";
-import Card from "./Card.vue";
+import CFooter from "./MyFooter.vue";
+import CCard from "./Card.vue";
 import productJSON from "../assets/products.json";
 
 export default {
   name: "my-page",
 
-  components: { MyHeader, Card, MyFooter },
+  components: { MyHeader, CCard, CFooter },
 
   props: {
     user: {

@@ -5,22 +5,26 @@
   background-color: #ffffff;
   top: 0;
   z-index: 1000;
+  padding: 16px 0px;
 }
 
 .c-wrapper {
-  margin: 16px 40px;
-  display: flex;
-  justify-content: flex-start;
+  margin: 0px 40px;
   text-align: start;
+  /* display: flex;
+  justify-content: flex-start;
+  
   align-items: center;
-  max-height: 48px;
+  max-height: 48px; */
 }
 
 .logo{
+  margin-top: 4px;
+    margin-bottom: 4px;
   height:40px;
 }
 
-.btn-search {
+.input-search {
   margin-left: 60px;
   height: 48px;
   max-width: 620px;

@@ -1,20 +1,20 @@
 <template>
   <div class="c-navbar">
-    <div class="c-wrapper">
+    <div class="c-wrapper d-flex">
       <img
         class="logo"
         src="https://assets.website-files.com/5fafb178b3236f251c2ec605/5fafe519c3163b6fd26dd449_logo-color.svg"
       />
       <input
         type="text"
-        class="btn-search"
+        class="input-search"
         maxlength="256"
         name="Search"
         data-name="Search"
         placeholder="Search products"
         id="Search"
       />
-      <div class="g-right row">
+      <div class="ml-auto row">
         <!-- <my-button
             size="small"
             @onClick="onLogout"
@@ -34,7 +34,7 @@
           label="Sign up"
           v-if="!user"
         />
-        <c-icon-button _icon="search" _icon-hovered="search" />
+        <c-icon-button class="btn-search" _icon="search" _icon-hovered="search" />
         <c-icon-button
           _icon="bag-check"
           _icon-hovered="bag-check-fill"
@@ -78,3 +78,20 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+
+.btn-search{
+  display: none;
+}
+
+@media screen and (max-width: 960px) {
+    .input-search{
+      display: none;
+    }
+
+    .btn-search{
+      display: block;
+    }
+}
+</style>
