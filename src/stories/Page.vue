@@ -7,7 +7,7 @@
       @onCreateAccount="onCreateAccount"
     />
     <div class="content-wrapper">
-      <b-row class="w-layout-grid m-auto">
+      <b-row class="w-layout-grid">
         <c-card
           v-for="product in productList.data"
           :key="product.id"
@@ -58,6 +58,7 @@ export default {
 </script>
 
 <style scoped>
+
 .main-wrapper {
   min-height: 100vh;
   justify-content: space-between;
