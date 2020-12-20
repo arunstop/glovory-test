@@ -41,11 +41,11 @@ body {
   color: #222b45;
   font-size: 16px;
   line-height: 24px;
-  overflow: hidden;
-}
-body:hover{
   overflow: auto;
 }
+/* body:hover{
+  overflow: auto;
+} */
 
 .c-btn-round{
   border-radius: 12px !important;
