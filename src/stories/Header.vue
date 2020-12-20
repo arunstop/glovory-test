@@ -34,8 +34,13 @@
           label="Sign up"
           v-if="!user"
         />
-        <c-icon-button icon="search" icon-hovered="search" />
-        <my-sidebar />
+        <c-icon-button icon="search" iconHovered="search" />
+        <c-icon-button
+          icon="bag-check"
+          icon-hovered="bag-check-fill"
+          v-b-toggle.sidebar-right
+        />
+        <c-side-bar :_id="'sidebar-right'"/>
         <c-icon-button icon="person" icon-hovered="person-fill" />
       </div>
     </div>
@@ -46,13 +51,13 @@
 import "./global.css";
 import "./header.css";
 import MyButton from "./Button.vue";
-import MySidebar from "./Sidebar.vue";
+import CSideBar from "./Sidebar.vue";
 import CIconButton from "./IconButton.vue";
 
 export default {
   name: "my-header",
 
-  components: { MyButton, MySidebar, CIconButton },
+  components: { MyButton, CSideBar, CIconButton },
 
   props: {
     user: {

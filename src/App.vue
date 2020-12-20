@@ -41,6 +41,10 @@ body {
   color: #222b45;
   font-size: 16px;
   line-height: 24px;
+  overflow: hidden;
+}
+body:hover{
+  overflow: auto;
 }
 
 .c-btn-round{
@@ -59,5 +63,30 @@ body {
 .c-fw500{
   font-weight: 500;
 }
+
+/* scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+  
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  /* box-shadow: inset 0 0 10px 10px transparent;
+  border: solid 3px transparent; */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 10px 10px #d63b30;
+  border: solid 3px transparent;
+  border-radius: 12px;
+}
+
+.clickable{
+  cursor: pointer;
+}
+
 
 </style>
