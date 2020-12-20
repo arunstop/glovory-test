@@ -18,8 +18,8 @@
         </div>
       </div>
       <div class="c-cart-right d-flex flex-column ml-auto">
-        <b-button class="ml-auto" variant="light">
-          <b-icon icon="trash-fill" style="color: #c5cee0" @click="m_remove" />
+        <b-button class="ml-auto" variant="light" @click="m_remove" >
+          <b-icon icon="trash-fill" style="color: #c5cee0" />
         </b-button>
         <p class="c-item-price mt-auto text-block font-weight-bold">Rp 7.000</p>
       </div>
@@ -36,6 +36,7 @@ export default {
   },
   methods: {
     m_remove() {
+      console.log('clicked');
       this.visible = false;
     },
   },
