@@ -30,7 +30,7 @@
             <c-modal
               :_id="'modal-center'"
               _title="Empty cart"
-              _message="All items in cart will be deleted, are you sure?"
+              _message="All items in cart will be removed, are you sure?"
             />
           </div>
           <div class="c-sidebar-content column p-3">

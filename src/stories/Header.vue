@@ -34,14 +34,14 @@
           label="Sign up"
           v-if="!user"
         />
-        <c-icon-button icon="search" iconHovered="search" />
+        <c-icon-button _icon="search" _icon-hovered="search" />
         <c-icon-button
-          icon="bag-check"
-          icon-hovered="bag-check-fill"
+          _icon="bag-check"
+          _icon-hovered="bag-check-fill"
           v-b-toggle.sidebar-right
         />
         <c-side-bar :_id="'sidebar-right'"/>
-        <c-icon-button icon="person" icon-hovered="person-fill" />
+        <c-icon-button _icon="person" _icon-hovered="person-fill" />
       </div>
     </div>
   </div>
