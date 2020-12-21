@@ -34,17 +34,16 @@
             />
           </div>
           <div class="c-sidebar-content column p-3">
-            <c-cart-item />
-            <c-cart-item />
-            <c-cart-item />
-            <c-cart-item />
+            <div v-for="index in dummy_cart_item" :key="index">
+              <c-cart-item />
+            </div>
           </div>
           <div class="c-sidebar-footer mt-auto p-3">
             <b-button
               class="c-btn-round mt-auto d-flex justify-content-between p-3 c-c-primary"
               variant="danger"
               block
-              @click="hide"
+              @click="hide();purchaseHandler();"
             >
               <span class="my-auto">Purchase Order</span>
               <h6 class="font-weight-bold my-auto">Rp 28.000</h6>
@@ -70,6 +69,7 @@ export default {
   data() {
     return {
       isHovered: false,
+      dummy_cart_item: 8,
     };
   },
   methods: {
@@ -84,6 +84,10 @@ export default {
       } else {
         e_body.classList.remove("overflow-hidden");
       }
+    },
+    purchaseHandler() {
+      alert('PRESSED');
+      this.dummy_cart_item = 0;
     },
   },
 };
