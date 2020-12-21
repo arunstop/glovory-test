@@ -7,7 +7,7 @@
       <p>{{ productData.name }}</p>
       <p class="c-text-primary">{{ productData.priceLabel }}</p>
     </div>
-    <b-button class="c-c-primary c-btn-round c-fw500">Add to cart</b-button>
+    <b-button class="c-c-primary c-btn-round c-fw500" @click="m_addTocart()">Add to cart</b-button>
   </div>
 </template>
 
@@ -17,6 +17,12 @@ export default {
   name: "Card",
   props: {
     productData: Object
+  },
+  methods:{
+    m_addTocart(){
+      this.$store.commit('increment');
+      alert(this.$store.state.cartItem)
+    }
   }
 };
 </script>

@@ -22,7 +22,9 @@
             >
               <span aria-hidden="true">&times;</span>
             </b-button>
-            <b class="mx-3">Cart</b>
+            <b class="mx-3">
+              Cart ({{ data_cart_item }} item{{ data_cart_item > 1 ? "s" : "" }})
+            </b>
             <u class="ml-auto clickable c-btn-clear-all" v-b-modal.modal-center>
               Clear All
             </u>
@@ -34,7 +36,7 @@
             />
           </div>
           <div class="c-sidebar-content column p-3">
-            <div v-for="index in dummy_cart_item" :key="index">
+            <div v-for="index in data_cart_item" :key="index">
               <c-cart-item />
             </div>
           </div>
@@ -43,7 +45,10 @@
               class="c-btn-round mt-auto d-flex justify-content-between p-3 c-c-primary"
               variant="danger"
               block
-              @click="hide();purchaseHandler();"
+              @click="
+                hide();
+                purchaseHandler();
+              "
             >
               <span class="my-auto">Purchase Order</span>
               <h6 class="font-weight-bold my-auto">Rp 28.000</h6>
@@ -69,8 +74,12 @@ export default {
   data() {
     return {
       isHovered: false,
-      dummy_cart_item: 8,
     };
+  },
+  computed: {
+    data_cart_item() {
+      return this.$store.state.cartItem;
+    },
   },
   methods: {
     hoverHandler(hovered) {
@@ -86,7 +95,7 @@ export default {
       }
     },
     purchaseHandler() {
-      alert('PRESSED');
+      // alert('PRESSED');
       this.dummy_cart_item = 0;
     },
   },

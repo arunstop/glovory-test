@@ -75,6 +75,7 @@ body {
 ::-webkit-scrollbar-track {
   /* box-shadow: inset 0 0 10px 10px transparent;
   border: solid 3px transparent; */
+  background-color: transparent;
 }
 
 /* Handle */
