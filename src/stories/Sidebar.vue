@@ -9,6 +9,7 @@
       no-header
       width="360px"
       @change="unscrollableBody"
+      lazy
     >
       <template #default="{ hide }">
         <div class="d-flex flex-column">

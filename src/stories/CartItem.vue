@@ -1,6 +1,6 @@
 <template>
   <transition name="bounce">
-    <div class="d-flex c-cart-wrapper py-3" v-if="visible">
+    <div class="d-flex c-cart-wrapper py-3 ani-bounce-in" v-if="visible">
       <div class="c-cart-left">
         <img
           class="c-cart-img"
@@ -39,11 +39,16 @@ export default {
     m_remove() {
       console.log('clicked');
       this.visible = false;
+      // this.$store.commit('cart_remove')
     },
   },
 };
 </script>
 <style scoped>
+.ani-bounce-in{
+  animation: bounce-in .6s;
+}
+
 .c-cart-wrapper {
   border-bottom: 1px solid #e4e9f2;
 }
