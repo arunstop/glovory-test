@@ -20,8 +20,8 @@ export default {
   },
   methods:{
     m_addTocart(){
-      this.$store.commit('increment');
-      alert(this.$store.state.cartItem)
+      this.$store.commit('cart_add');
+      // alert(this.$store.state.cartItem)
     }
   }
 };

@@ -18,6 +18,7 @@
         </div>
       </div>
       <div class="c-cart-right d-flex flex-column ml-auto">
+        <!-- remove item from cart -->
         <b-button class="ml-auto" variant="light" @click="m_remove" >
           <b-icon icon="trash-fill" style="color: #c5cee0" />
         </b-button>

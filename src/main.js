@@ -15,11 +15,15 @@ const store = new Vuex.Store({
     cartItem : 6
   },
   mutations:{
-    increment(state){
+    cart_add(state){
       state.cartItem++
     },
-    store_empty_cart(){
-      this.cartItem=0
+    cart_remove(state){
+      state.cartItem--
+    },
+    cart_empty(state){
+      alert('cart emptied')
+      state.cartItem=0
     }
   }
 });

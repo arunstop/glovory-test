@@ -25,7 +25,7 @@
             <b class="mx-3">
               Cart ({{ data_cart_item }} item{{ data_cart_item > 1 ? "s" : "" }})
             </b>
-            <u class="ml-auto clickable c-btn-clear-all" v-b-modal.modal-center>
+            <u class="ml-auto clickable c-btn-clear-all" @click="m_empty_cart()">
               Clear All
             </u>
             <!-- with colon(:) u need to add '' -->
@@ -33,6 +33,8 @@
               :_id="'modal-center'"
               _title="Empty cart"
               _message="All items in cart will be removed, are you sure?"
+              :_ok_title="'Delete'"
+              :_ok_variant="'danger'"
             />
           </div>
           <div class="c-sidebar-content column p-3">
@@ -49,6 +51,7 @@
                 hide();
                 purchaseHandler();
               "
+              v-if="data_cart_item>0"
             >
               <span class="my-auto">Purchase Order</span>
               <h6 class="font-weight-bold my-auto">Rp 28.000</h6>
@@ -95,9 +98,11 @@ export default {
       }
     },
     purchaseHandler() {
-      // alert('PRESSED');
-      this.dummy_cart_item = 0;
+      alert('PRESSED');
     },
+    m_empty_cart(){
+      this.$store.commit('cart_empty')
+    }
   },
 };
 </script>
