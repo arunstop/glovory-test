@@ -1,6 +1,6 @@
 <template>
-  <transition name="bounce">
-    <div class="c-card">
+
+    <div class="c-card ani-bounce-in">
       <div class="c-product-thumbnail">
         <img class="c-product-img" :src="productData.src" />
       </div>
@@ -12,7 +12,6 @@
         >Add to cart</b-button
       >
     </div>
-  </transition>
 </template>
 
 <script>
@@ -31,8 +30,20 @@ export default {
 };
 </script>
 <style scoped>
-.c-card{
+.ani-bounce-in{
   animation: bounce-in .6s;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .c-card:hover {
