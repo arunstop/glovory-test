@@ -1,6 +1,5 @@
 <template>
-  <transition name="bounce">
-    <div class="d-flex c-cart-wrapper py-3 ani-bounce-in" v-if="visible">
+    <div class="d-flex c-cart-wrapper py-3 ani-bounce-in">
       <div class="c-cart-left">
         <img
           class="c-cart-img"
@@ -25,7 +24,6 @@
         <p class="c-item-price mt-auto text-block font-weight-bold">Rp 7.000</p>
       </div>
     </div>
-  </transition>
 </template>
 <script>
 export default {
@@ -38,13 +36,14 @@ export default {
   methods: {
     m_remove() {
       console.log('clicked');
-      this.visible = false;
-      // this.$store.commit('cart_remove')
+      // this.visible = false;
+      this.$store.commit('cart_remove')
     },
   },
 };
 </script>
 <style scoped>
+/* add this to bounce when opening sidebar */
 .ani-bounce-in{
   animation: bounce-in .6s;
 }
@@ -84,10 +83,10 @@ export default {
   float: right !important;
 }
 /* animation */
-.bounce-enter-active {
+.bounce-in-enter-active {
   animation: bounce-in .5s;
 }
-.bounce-leave-active {
+.bounce-in-leave-active {
   animation: bounce-in .5s reverse;
 }
 @keyframes bounce-in {

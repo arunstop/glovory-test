@@ -34,14 +34,24 @@
           label="Sign up"
           v-if="!user"
         />
-        <c-icon-button class="btn-search" _icon="search" _icon-hovered="search" />
+
+        <c-icon-button
+          class="btn-search ml-2"
+          _icon="search"
+          _icon-hovered="search"
+        />
         <c-icon-button
           _icon="bag-check"
           _icon-hovered="bag-check-fill"
+          :_badgeLabel="data_cart_item"
           v-b-toggle.sidebar-right
         />
-        <c-side-bar :_id="'sidebar-right'"/>
-        <c-icon-button _icon="person" _icon-hovered="person-fill" />
+        <c-side-bar :_id="'sidebar-right'" />
+        <c-icon-button
+          _icon="person"
+          _icon-hovered="person-fill"
+          class="ml-2"
+        />
       </div>
     </div>
   </div>
@@ -65,6 +75,12 @@ export default {
     },
   },
 
+  computed: {
+    data_cart_item() {
+      return this.$store.state.cartItem;
+    },
+  },
+
   methods: {
     onLogin() {
       this.$emit("onLogin");
@@ -80,18 +96,17 @@ export default {
 </script>
 
 <style scoped>
-
-.btn-search{
+.btn-search {
   display: none;
 }
 
 @media screen and (max-width: 960px) {
-    .input-search{
-      display: none;
-    }
+  .input-search {
+    display: none;
+  }
 
-    .btn-search{
-      display: block;
-    }
+  .btn-search {
+    display: block;
+  }
 }
 </style>

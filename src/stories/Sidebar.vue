@@ -24,9 +24,14 @@
               <span aria-hidden="true">&times;</span>
             </b-button>
             <b class="mx-3">
-              Cart ({{ data_cart_item }} item{{ data_cart_item > 1 ? "s" : "" }})
+              Cart ({{ data_cart_item }} item{{
+                data_cart_item > 1 ? "s" : ""
+              }})
             </b>
-            <u class="ml-auto clickable c-btn-clear-all" v-b-modal.modal-empty-cart>
+            <u
+              class="ml-auto clickable c-btn-clear-all"
+              v-b-modal.modal-empty-cart
+            >
               Clear All
             </u>
             <!-- with colon(:) u need to add '' -->
@@ -53,7 +58,7 @@
                 hide();
                 purchaseHandler();
               "
-              v-if="data_cart_item>0"
+              v-if="data_cart_item > 0"
             >
               <span class="my-auto">Purchase Order</span>
               <h6 class="font-weight-bold my-auto">Rp 28.000</h6>
@@ -100,11 +105,11 @@ export default {
       }
     },
     purchaseHandler() {
-      alert('PRESSED');
+      alert("PRESSED");
     },
-    m_empty_cart(){
-      this.$store.commit('cart_empty')
-    }
+    m_empty_cart() {
+      this.$store.commit("cart_empty");
+    },
   },
 };
 </script>
