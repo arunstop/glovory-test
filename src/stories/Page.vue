@@ -9,7 +9,7 @@
     <div class="content-wrapper">
       <b-row class="w-layout-grid">
         <c-card
-          v-for="product in productList.data"
+          v-for="product in evenNumbers"
           :key="product.id"
           :productData="product"
         />
@@ -39,8 +39,21 @@ export default {
   },
   data() {
     return {
-      productList: productJSON
+      productList: productJSON,
+      kappa : this.$store.state.productSearchQuery
     };
+  },
+
+  computed:{
+    search_query() {
+      return this.$store.state.productSearchQuery;
+    },
+    evenNumbers: function(){
+      const sq = this.search_query.toLowerCase();
+      return this.productList.data.filter(function(data){
+        return data.name.toLowerCase().includes(sq)
+      })
+    }
   },
 
   methods: {
@@ -58,7 +71,6 @@ export default {
 </script>
 
 <style scoped>
-
 .main-wrapper {
   min-height: 100vh;
   justify-content: space-between;

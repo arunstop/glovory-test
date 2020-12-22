@@ -11,19 +11,24 @@ Vue.use(IconsPlugin)
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-  state:{
-    cartItem : 6
+  state: {
+    cartItem: 6,
+    productSearchQuery: ''
   },
-  mutations:{
-    cart_add(state){
+  mutations: {
+    product_search(state, query) {
+      state.productSearchQuery = query
+      // console.log(query)
+    },
+    cart_add(state) {
       state.cartItem++
     },
-    cart_remove(state){
+    cart_remove(state) {
       state.cartItem--
     },
-    cart_empty(state){
+    cart_empty(state) {
       alert('cart emptied')
-      state.cartItem=0
+      state.cartItem = 0
     }
   }
 });

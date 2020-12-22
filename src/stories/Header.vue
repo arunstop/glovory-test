@@ -13,6 +13,9 @@
         data-name="Search"
         placeholder="Search products"
         id="Search"
+        v-model="data_product_search_query"
+        @input="m_search_product"
+        
       />
       <div class="ml-auto row">
         <!-- <my-button
@@ -63,6 +66,7 @@ import "./header.css";
 import MyButton from "./Button.vue";
 import CSideBar from "./Sidebar.vue";
 import CIconButton from "./IconButton.vue";
+import { mapState } from 'vuex'
 
 export default {
   name: "my-header",
@@ -76,9 +80,18 @@ export default {
   },
 
   computed: {
-    data_cart_item() {
-      return this.$store.state.cartItem;
-    },
+    ...mapState({
+      data_cart_item: state => state.cartItem,
+      // data_product_search_query: state => state.productSearchQuery
+    }),
+    data_product_search_query: {
+        get: function () {
+          return this.$store.state.productSearchQuery
+        },
+        set:function (value) {
+          this.$store.commit("product_search", value)
+        },
+      },
   },
 
   methods: {
@@ -91,6 +104,9 @@ export default {
     onCreateAccount() {
       this.$emit("onCreateAccount");
     },
+    m_search_product(input){
+      this.$store.commit('product_search', input.target.value)
+    }
   },
 };
 </script>

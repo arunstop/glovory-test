@@ -23,7 +23,7 @@ export default {
   props: {
     _icon: String,
     _iconHovered: String,
-    _badgeLabel: String,//can be number as well
+    _badgeLabel: [String,Number],//can be number as well
   },
   methods: {
     hoverHandler(hovered) {
