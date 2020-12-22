@@ -1,7 +1,7 @@
 <template>
   <div class="c-card ani-bounce-in">
     <div class="c-product-thumbnail">
-      <img class="c-product-img" :src="productData.src" @click="m_toast" />
+      <img class="c-product-img" :src="productData.src"/>
     </div>
     <div class="c-product-desc c-fw500">
       <p class="mt-1">{{ productData.name }}</p>
