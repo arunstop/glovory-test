@@ -3,8 +3,8 @@ export default {
         state.productSearchQuery = query
         // console.log(query)
     },
-    cart_add(state) {
-        state.cartItem++
+    CART_ADD(state, qty) {
+        state.cartItem+=qty
     },
     cart_remove(state) {
         state.cartItem--

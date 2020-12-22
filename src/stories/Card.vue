@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     m_addTocart() {
-      this.$store.commit("cart_add");
+      this.$store.dispatch("addToCart", 1);
       // alert(this.$store.state.cartItem)
     },
     m_toast() {
