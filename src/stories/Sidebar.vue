@@ -13,10 +13,10 @@
     >
       <template #default="{ hide }">
         <div class="d-flex flex-column">
-          <div class="c-sidebar-header row p-3">
+          <div class="c-sidebar-header row p-3 align-items-center">
             <b-button
               type="button"
-              class="close"
+              class="close px-1"
               variant="light"
               aria-label="Close"
               @click="hide"
@@ -28,12 +28,10 @@
                 data_cart_item > 1 ? "s" : ""
               }})
             </b>
-            <u
-              class="ml-auto clickable c-btn-clear-all"
-              v-b-modal.modal-empty-cart
-            >
-              Clear All
-            </u>
+            <b-button class="ml-auto" variant="light" v-b-modal.modal-empty-cart>
+              <u class="c-btn-clear-all "> Clear All </u>
+            </b-button>
+
             <!-- with colon(:) u need to add '' -->
             <c-modal
               :_id="'modal-empty-cart'"
@@ -41,7 +39,7 @@
               _message="All items in cart will be removed, are you sure?"
               :_ok_title="'Delete'"
               :_ok_variant="'danger'"
-              :_ok_action="[m_empty_cart,hide]"
+              :_ok_action="[m_empty_cart, hide]"
             />
           </div>
           <div class="c-sidebar-content column p-3">
