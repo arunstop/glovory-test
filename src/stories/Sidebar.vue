@@ -26,16 +26,17 @@
             <b class="mx-3">
               Cart ({{ data_cart_item }} item{{ data_cart_item > 1 ? "s" : "" }})
             </b>
-            <u class="ml-auto clickable c-btn-clear-all" @click="m_empty_cart()">
+            <u class="ml-auto clickable c-btn-clear-all" v-b-modal.modal-empty-cart>
               Clear All
             </u>
             <!-- with colon(:) u need to add '' -->
             <c-modal
-              :_id="'modal-center'"
+              :_id="'modal-empty-cart'"
               _title="Empty cart"
               _message="All items in cart will be removed, are you sure?"
               :_ok_title="'Delete'"
               :_ok_variant="'danger'"
+              :_ok_action="m_empty_cart"
             />
           </div>
           <div class="c-sidebar-content column p-3">
