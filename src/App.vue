@@ -33,7 +33,8 @@ export default {
   min-height: 100vh; 100 viewport height */
   background-color: #f5f6f8;
   display: flex;
-  animation: fade-in 0.6s;
+  /* removed animation because sometimes it lagged */
+  /* animation: fade-in 0.6s; */
 }
 @keyframes fade-in {
   0% {
