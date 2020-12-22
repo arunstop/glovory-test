@@ -2,13 +2,13 @@
   <!-- Modal -->
   <b-modal
     :id="_id"
-    centered
     :title="_title"
     :ok-title="_ok_title"
     :ok-variant="_ok_variant"
     :cancel-title="_cancel_title"
     :cancel-variant="_cancel_variant"
     @ok="_ok_action"
+    centered
   >
     <p class="my-4">{{ _message }}</p>
   </b-modal>
@@ -24,7 +24,7 @@ export default {
     _ok_variant: String,
     _cancel_title: String,
     _cancel_variant: { type: String, default: "light" },
-    _ok_action: Function
+    _ok_action: Array,
   },
 };
 </script>
