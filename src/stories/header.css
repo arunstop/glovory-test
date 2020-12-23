@@ -26,11 +26,11 @@
 
 .input-search {
   margin-left: 60px;
-  height: 48px;
+  height: 48px !important;
   max-width: 620px;
   width: 100%;
   margin-bottom: 0px;
-  padding-left: 54px;
+  padding-left: 54px !important;
   border: 1px solid transparent;
   border-radius: 8px;
   background-color: #f7f9fc;

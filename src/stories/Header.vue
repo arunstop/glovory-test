@@ -1,22 +1,24 @@
 <template>
   <div class="c-navbar">
-    <div class="c-wrapper d-flex">
+    <div class="c-wrapper d-flex position-relative">
       <img
         class="logo"
         src="https://assets.website-files.com/5fafb178b3236f251c2ec605/5fafe519c3163b6fd26dd449_logo-color.svg"
       />
+      <!-- v-model.lazy is for after input.value changed -->
       <input
         type="text"
-        class="input-search"
+        class="input-search input-search-visibility"
         maxlength="256"
         name="Search"
         data-name="Search"
         placeholder="Search products"
         id="Search"
         v-model="data_product_search_query"
-        @input="m_search_product"
+        debounce="600"
       />
-      <div class="ml-auto row">
+
+      <div class="ml-auto row mr-0">
         <!-- <my-button
             size="small"
             @onClick="onLogout"
@@ -38,9 +40,10 @@
         />
 
         <c-icon-button
-          class="btn-search ml-2"
+          class="btn-icon-search ml-2"
           _icon="search"
           _icon-hovered="search"
+          @click.native="m_toggle_search_bar_2nd"
         />
         <c-icon-button
           _icon="bag-check"
@@ -56,6 +59,29 @@
           @click.native="m_login"
         />
       </div>
+      <div
+        class="container-fluid position-absolute p-0 mx-0 c-search-bar-2"
+        :style="{ display: h_hide_search_bar2nd }">
+        <b-input-group>
+          <b-form-input
+            type="text"
+            class="input-search mx-0"
+            maxlength="256"
+            name="Search2nd"
+            data-name="Search2nd"
+            placeholder="Search products"
+            id="Search2nd"
+            v-model="data_product_search_query"
+            lazy
+          />
+
+          <b-input-group-append class="bg-light">
+            <b-button variant="outline-primary" @click="m_toggle_search_bar_2nd"
+              ><h3 aria-hidden="true" class="m-0">&times;</h3></b-button
+            >
+          </b-input-group-append>
+        </b-input-group>
+      </div>
     </div>
   </div>
 </template>
@@ -70,6 +96,10 @@ import { mapState } from "vuex";
 
 export default {
   name: "my-header",
+
+  data() {
+    return { showSearchBar2nd: false };
+  },
 
   components: { MyButton, CSideBar, CIconButton },
 
@@ -92,6 +122,9 @@ export default {
         this.$store.commit("product_search", value);
       },
     },
+    h_hide_search_bar2nd() {
+      return this.showSearchBar2nd ? "block" : "none";
+    },
   },
 
   methods: {
@@ -109,23 +142,27 @@ export default {
     },
     m_login() {
       // this.$bvToast.show("kekw");
-      alert('Login')
+      alert("Login");
+    },
+    m_toggle_search_bar_2nd() {
+      this.showSearchBar2nd = !this.showSearchBar2nd;
+      // alert(this.showSearchBar2nd)
     },
   },
 };
 </script>
 
 <style scoped>
-.btn-search {
+.btn-icon-search {
   display: none;
 }
 
 @media screen and (max-width: 960px) {
-  .input-search {
+  .input-search-visibility {
     display: none;
   }
 
-  .btn-search {
+  .btn-icon-search {
     display: block;
   }
 }
