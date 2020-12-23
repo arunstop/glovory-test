@@ -1,10 +1,12 @@
 <template>
   <div id="app">
+    <!-- <p>{{ generateLongId(120) }}</p> -->
     <Page user="Arunstop" />
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 // import HelloWorld from "./components/HelloWorld.vue";
 import Page from "./stories/Page.vue";
 // import Alert from "./stories/Alert.vue";
@@ -13,14 +15,25 @@ export default {
   name: "App",
   components: {
     // HelloWorld,
-    Page
+    Page,
     // Alert
-  }
+  },
+  computed: {
+    // normal way
+    id() {
+      return this.$store.getters.generateId;
+    },
+    longId() {
+      return this.$store.getters.generateLongId(120);
+    },
+    // vuex mapgetters helper
+    ...mapGetters(['generateId', 'generateLongId'])
+  },
 };
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 #app {
   font-family: Rubik, sans-serif !important;
@@ -60,20 +73,20 @@ body {
   overflow: auto;
 } */
 
-.c-btn-round{
+.c-btn-round {
   border-radius: 12px !important;
 }
 
-.c-c-primary{
+.c-c-primary {
   background-color: #d63b30 !important;
   border: 0px !important;
 }
 
-.c-text-primary{
+.c-text-primary {
   color: #d63b30 !important;
 }
 
-.c-fw500{
+.c-fw500 {
   font-weight: 500;
 }
 
@@ -81,7 +94,6 @@ body {
 /* width */
 ::-webkit-scrollbar {
   width: 12px;
-  
 }
 
 /* Track */
@@ -98,9 +110,7 @@ body {
   border-radius: 12px;
 }
 
-.clickable{
+.clickable {
   cursor: pointer;
 }
-
-
 </style>
