@@ -43,7 +43,7 @@
               _message="All items in cart will be removed, are you sure?"
               :_ok_title="'Delete'"
               :_ok_variant="'danger'"
-              :_ok_action="[m_empty_cart, hide]"
+              :_ok_action="[m_empty_cart, purchaseHandler, hide]"
             />
           </div>
           <div class="c-sidebar-content column p-3">
