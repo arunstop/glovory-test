@@ -3,17 +3,16 @@
     <div class="c-product-thumbnail">
       <img class="c-product-img" :src="productData.src"/>
     </div>
-    <div class="c-product-desc c-fw500">
+    <div class="c-product-desc c-fw500 d-flex flex-column mb-2">
       <p class="mt-1">{{ productData.name }}</p>
-      <p class="c-text-primary">{{ productData.priceLabel }}</p>
+      <p class="c-text-primary mb-0 mt-auto">{{ productData.priceLabel }}</p>
     </div>
     <b-button
-      class="c-c-primary c-btn-round c-fw500"
+      class="c-c-primary c-btn-round c-fw500 mt-auto"
       @click="
         m_addTocart();
         m_toast();
-      "
-    >
+      ">
       Add to cart 
     </b-button>
     <c-toast
