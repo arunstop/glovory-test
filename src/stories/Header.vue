@@ -59,7 +59,7 @@
         />
       </div>
       <div
-        class="container-fluid position-absolute p-0 mx-0 c-search-bar-2"
+        class="container-fluid position-absolute p-0 mx-0 c-search-bar-2 ani-bounce-in "
         :style="{ display: h_hide_search_bar2nd }">
         <b-input-group>
           <b-form-input
@@ -75,7 +75,7 @@
           />
 
           <b-input-group-append class="bg-light">
-            <b-button variant="outline-primary" @click="m_toggle_search_bar_2nd"
+            <b-button variant="outline-danger" @click="m_toggle_search_bar_2nd"
               ><h3 aria-hidden="true" class="m-0">&times;</h3></b-button
             >
           </b-input-group-append>
@@ -165,4 +165,21 @@ export default {
     display: block;
   }
 }
+
+.ani-bounce-in {
+  animation: bounce-in 0.6s;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 </style>

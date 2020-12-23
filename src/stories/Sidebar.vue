@@ -28,8 +28,12 @@
                 data_cart_item > 1 ? "s" : ""
               }})
             </b>
-            <b-button class="ml-auto" variant="light" v-b-modal.modal-empty-cart>
-              <u class="c-btn-clear-all "> Clear All </u>
+            <b-button
+              class="ml-auto"
+              variant="light"
+              v-b-modal.modal-empty-cart
+            >
+              <u class="c-btn-clear-all"> Clear All </u>
             </b-button>
 
             <!-- with colon(:) u need to add '' -->
@@ -69,9 +73,9 @@
 </template>
 
 <script>
-// import CIconButton from "./IconButton.vue";
 import CCartItem from "./CartItem.vue";
 import CModal from "./Modal.vue";
+// import customToast from "./custom-toast";
 
 export default {
   name: "c-sidebar",
@@ -79,21 +83,13 @@ export default {
   props: {
     _id: String,
   },
-  data() {
-    return {
-      isHovered: false,
-    };
-  },
   computed: {
     data_cart_item() {
       return this.$store.state.cartItem;
     },
   },
   methods: {
-    hoverHandler(hovered) {
-      this.isHovered = hovered;
-    },
-    //make body unscrollable when sidbar is shown
+    //make body unscrollable when sidebar is shown
     unscrollableBody(visible) {
       const e_body = document.getElementsByTagName("body")[0];
       if (visible) {
@@ -103,7 +99,14 @@ export default {
       }
     },
     purchaseHandler() {
-      alert("PRESSED");
+      // customToast();
+      this.$bvToast.toast("Cart has been emptied", {
+        title: "Notification",
+        variant: "success",
+        solid: true,
+        hoHoverPause: true,
+        autoHideDelay: 1200,
+      });
     },
     m_empty_cart() {
       this.$store.commit("cart_empty");

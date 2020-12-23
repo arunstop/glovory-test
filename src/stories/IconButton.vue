@@ -4,7 +4,7 @@
     variant="light"
     v-b-hover="hoverHandler"
   >
-    <b-badge class="c-badge c-c-primary" variant="dark" pill v-if="_badgeLabel > 0 || _badgeLabel"> 
+    <b-badge class="c-badge c-c-primary font-font-weight-normal " variant="dark" pill v-if="_badgeLabel > 0 || _badgeLabel"> 
       {{ _badgeLabel }}
     </b-badge>
     <b-icon v-if="isHovered" :icon="_iconHovered" :aria-label="_iconHovered">

@@ -14,10 +14,10 @@
         m_toast();
       "
     >
-      Add to cart
+      Add to cart 
     </b-button>
     <c-toast
-      :_id="t_pdId"
+      :_id="(toastId)"
       :_message="'Succesfully adding item to your cart!'"
       :_others="{ 'no-close-button': true, variant: 'success'}"
     />
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import "./card.css";
 import CToast from "./Toast.vue";
 export default {
@@ -39,9 +40,10 @@ export default {
     };
   },
   computed: {
-    t_pdId() {
+    toastId() {
       return "toast-" + this.pdId;
     },
+    ...mapGetters(['generateId'])
   },
   methods: {
     m_addTocart() {
@@ -49,7 +51,7 @@ export default {
       // alert(this.$store.state.cartItem)
     },
     m_toast() {
-      this.$bvToast.show(this.t_pdId);
+      this.$bvToast.show(this.toastId);
     },
   },
 };
@@ -76,17 +78,5 @@ export default {
   -webkit-transform: translate(0px, -5px);
   -ms-transform: translate(0px, -5px);
   transform: translate(0px, -5px);
-}
-
-@keyframes bounce-in {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
-  }
 }
 </style>
