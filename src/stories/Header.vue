@@ -15,7 +15,6 @@
         placeholder="Search products"
         id="Search"
         v-model="data_product_search_query"
-        debounce="600"
       />
 
       <div class="ml-auto row mr-0">
