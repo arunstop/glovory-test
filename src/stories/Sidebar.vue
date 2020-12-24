@@ -75,7 +75,7 @@
 <script>
 import CCartItem from "./CartItem.vue";
 import CModal from "./Modal.vue";
-import globalUi from "./global-ui";
+// import customToast from "./custom-toast";
 
 export default {
   name: "c-sidebar",
@@ -101,7 +101,9 @@ export default {
     purchaseHandler() {
       // console.log(this.$root);
       // globalUi.showToast(this.$root.$bvToast, "Cart has been emptied", {variant: "danger",});
-      globalUi()
+      // customToast()
+      // console.log(this.$globals.methods)
+      this.$globals.methods.showToast('kapap')
 
     },
     m_empty_cart() {

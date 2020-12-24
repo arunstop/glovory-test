@@ -16,64 +16,22 @@
 //   -----3. Remove the argument parentheses
 //   a => a + 100;
 
+import Vue from 'vue'
 // console.log(Vue.prototype)
 
-// export default class {
-//   vueInstance = null;
 
-//   constructor(vueInstance){
-//     this.vueInstance=vueInstance
-//   }
+export default () => {
+  const vm = new Vue({})
 
-
-//   showToast(){
-//     // alert('success');
-//     this.vueInstance.$bvToast.toast("Cart has been emptied", {
-//       title: "Notification",
-//       variant: "danger",
-//       solid: true,
-//       hoHoverPause: true,
-//       autoHideDelay: 1200,
-//       append: false
-//     })
-//   }
-// }
-
-const globalUi = vueInstance => ({
-  methods: {
-    showToast(msg) {
-      // alert('success');
-      vueInstance.$bvToast.toast(msg, {
-        title: "Notification",
-        variant: "danger",
-        solid: true,
-        hoHoverPause: true,
-        autoHideDelay: 1200,
-        append: false
-      })
-    }
-  }
-}) 
-
-export default globalUi;
-
-
-// export default (vueInstance) => class MyClass {
-
-//   showToast(){
-//     console.log(vueInstance)
-//     vueInstance.$bvToast.toast("Cart has been emptied", {
-//       title: "Notification",
-//       variant: "danger",
-//       solid: true,
-//       hoHoverPause: true,
-//       autoHideDelay: 1200,
-//       append: false
-//     })
-//   }
-// }
-
-
+  vm.$bvToast.toast("Cart has been emptied", {
+    title: "Notification",
+    variant: "success",
+    solid: true,
+    hoHoverPause: true,
+    autoHideDelay: 1200,
+    append: false
+  })
+}
 
 // export default function ({vueInstance}) {
 
