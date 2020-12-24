@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- <p>{{ generateLongId(120) }}</p> -->
+    <!-- <p>{{ kekw }}</p> -->
     <Page user="Arunstop" />
   </div>
 </template>
@@ -10,7 +10,6 @@ import { mapGetters } from 'vuex';
 // import HelloWorld from "./components/HelloWorld.vue";
 import Page from "./stories/Page.vue";
 // import Alert from "./stories/Alert.vue";
-
 export default {
   name: "App",
   components: {
@@ -22,6 +21,9 @@ export default {
     // normal way
     id() {
       return this.$store.getters.generateId;
+    },
+    kekw(){
+      return console.log(this.$appName)
     },
     longId() {
       return this.$store.getters.generateLongId(120);

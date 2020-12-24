@@ -75,7 +75,7 @@
 <script>
 import CCartItem from "./CartItem.vue";
 import CModal from "./Modal.vue";
-// import customToast from "./custom-toast";
+import globalUi from "./global-ui";
 
 export default {
   name: "c-sidebar",
@@ -99,17 +99,13 @@ export default {
       }
     },
     purchaseHandler() {
-      // customToast();
-      this.$bvToast.toast("Cart has been emptied", {
-        title: "Notification",
-        variant: "success",
-        solid: true,
-        hoHoverPause: true,
-        autoHideDelay: 1200,
-      });
+      // console.log(this.$root);
+      // globalUi.showToast(this.$root.$bvToast, "Cart has been emptied", {variant: "danger",});
+      globalUi()
+
     },
     m_empty_cart() {
-      this.$store.commit("cart_empty");
+      this.$store.dispatch('emptyCart')
     },
   },
 };

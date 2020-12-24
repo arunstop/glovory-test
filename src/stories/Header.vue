@@ -120,7 +120,7 @@ export default {
         return this.$store.state.productSearchQuery;
       },
       set: function (value) {
-        this.$store.commit("product_search", value);
+        this.$store.dispatch("searchProduct", value);
       },
     },
     h_hide_search_bar2nd() {
@@ -139,7 +139,7 @@ export default {
       this.$emit("onCreateAccount");
     },
     m_search_product(input) {
-      this.$store.commit("product_search", input.target.value);
+      this.$store.dispatch("searchProduct", input.target.value);
     },
     m_login() {
       // this.$bvToast.show("kekw");

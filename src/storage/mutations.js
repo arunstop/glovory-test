@@ -1,5 +1,5 @@
 export default {
-    product_search(state, query) {
+    PRODUCT_SEARCH(state, query) {
         state.productSearchQuery = query
         // console.log(query)
     },
@@ -9,7 +9,7 @@ export default {
     cart_remove(state) {
         state.cartItem--
     },
-    cart_empty(state) {
+    CART_EMPTY(state) {
         state.cartItem = 0
     }
 }
