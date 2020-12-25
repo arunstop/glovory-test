@@ -2,6 +2,7 @@
   <div>
     <b-sidebar
       :id="_id"
+      :ref="_id"
       aria-labelledby="sidebar-no-header-title"
       backdrop
       right
@@ -28,11 +29,8 @@
                 data_cart_item > 1 ? "s" : ""
               }})
             </b>
-            <b-button
-              class="ml-auto"
-              variant="light"
-              v-b-modal.modal-empty-cart
-            >
+            <b-button class="ml-auto" variant="light" @click="m_empty_cart1()">
+              <!-- v-b-modal.modal-empty-cart -->
               <u class="c-btn-clear-all"> Clear All </u>
             </b-button>
 
@@ -103,11 +101,30 @@ export default {
       // globalUi.showToast(this.$root.$bvToast, "Cart has been emptied", {variant: "danger",});
       // customToast()
       // console.log(this.$globals.methods)
-      this.$globals.methods.showToast('kapap')
-
+      // this.$globals.ui.showToast('Cart has been emptied')
     },
     m_empty_cart() {
-      this.$store.dispatch('emptyCart')
+      this.$store.dispatch("emptyCart");
+    },
+    m_empty_cart1() {
+      // accessing global variable via this.$globals
+      // var okAct = () => {
+      //   this.$store.dispatch("emptyCart");
+      //   this.$globals.ui.showToast("Cart has been emptied");
+      //   //closing sidebar with reference
+      //   this.$refs[this._id].hide();
+      // };
+      this.$globals.ui.showModal(
+        "All of your items in the cart will be removed and the action cannot be undone. Are you sure?",
+        "success",
+        () => {
+        this.$store.dispatch("emptyCart");
+        this.$globals.ui.showToast("Cart has been emptied");
+        //closing sidebar with reference
+        this.$refs[this._id].hide();
+      },
+        () => {}
+      );
     },
   },
 };

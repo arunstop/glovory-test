@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Vuex from 'vuex';
 import storage from './storage/storage'
-import globalUi from './stories/global-ui';
+import globals from './stories/globals';
 
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
@@ -18,8 +18,7 @@ const vm = new Vue({
   store: storage,
 })
 
-Vue.prototype.$appName = 'My App'
-Vue.prototype.$globals = new globalUi(vm)
+Vue.prototype.$globals = new globals(vm)
 
 
 vm.$mount('#app')

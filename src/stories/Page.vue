@@ -33,7 +33,7 @@ export default {
 
   props: {
     user: {
-      type: Object
+      type: String
     },
     productData: { type: Object }
   },

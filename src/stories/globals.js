@@ -39,23 +39,53 @@
 //   }
 // }
 
-const globalUi = vueInstance => ({
-  methods: {
+const _default = (vueInstance) => ({
+  props:{
+    appName : "Mobile Suit Gundam: Char's Counterattack",
+    apiKey1 : "",
+    apiKey2 : ""
+
+  },
+  ui: {
     showToast(msg) {
       // alert('success');
       vueInstance.$bvToast.toast(msg, {
         title: "Notification",
-        variant: "danger",
+        variant: "success",
         solid: true,
-        hoHoverPause: true,
+        noHoverPause: true,
         autoHideDelay: 1200,
-        append: false
+        append: false,
       })
+    },
+    showModal(msg, okVariant, okAction, cancelAction){
+      vueInstance.$bvModal.msgBoxConfirm(msg, {
+        title: 'Confirmation',
+        size: 'md',
+        buttonSize: 'md',
+        okVariant: okVariant,
+        cancelVariant: 'outline-dark',
+        headerClass: 'p-2 border-bottom-1 d-flex justify-content-center',
+        footerClass: 'p-2 border-top-1',
+        centered: true
+      })
+        .then((ok)=> {
+          if (ok){
+            okAction()
+            // alert('ok')
+          }else{
+            cancelAction()
+            // alert('cancel')
+          }
+        })
+        .catch(() => {
+          // alert('cancel')
+        })
     }
   }
 }) 
 
-export default globalUi;
+export default _default;
 
 
 // export default (vueInstance) => class MyClass {

@@ -1,12 +1,11 @@
 <template>
   <div id="app">
-    <!-- <p>{{ kekw }}</p> -->
     <Page user="Arunstop" />
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 // import HelloWorld from "./components/HelloWorld.vue";
 import Page from "./stories/Page.vue";
 // import Alert from "./stories/Alert.vue";
@@ -22,14 +21,14 @@ export default {
     id() {
       return this.$store.getters.generateId;
     },
-    kekw(){
-      return console.log(this.$appName)
-    },
     longId() {
       return this.$store.getters.generateLongId(120);
     },
     // vuex mapgetters helper
-    ...mapGetters(['generateId', 'generateLongId'])
+    ...mapGetters(["generateId", "generateLongId"]),
+  },
+  created: function () {
+    console.log(this.$globals.props.appName);
   },
 };
 </script>
