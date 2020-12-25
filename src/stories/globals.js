@@ -40,6 +40,8 @@
 // }
 
 const _default = (vueInstance) => ({
+  //getting vue instance from main.js
+  //then using it like injection $['injectionname]
   props:{
     appName : "Mobile Suit Gundam: Char's Counterattack",
     apiKey1 : "",
