@@ -1,6 +1,6 @@
 <template>
   <div class="main-wrapper">
-    <MyHeader
+    <c-header
       :user="user"
       @onLogin="onLogin"
       @onLogout="onLogout"
@@ -21,15 +21,15 @@
 
 <script>
 import "./page.css";
-import MyHeader from "./Header.vue";
-import CFooter from "./MyFooter.vue";
+import CHeader from "./Header.vue";
+import CFooter from "./Footer.vue";
 import CCard from "./Card.vue";
 import productJSON from "../assets/products.json";
 
 export default {
   name: "my-page",
 
-  components: { MyHeader, CCard, CFooter },
+  components: { CHeader, CCard, CFooter },
 
   props: {
     user: {

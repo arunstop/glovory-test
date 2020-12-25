@@ -6,6 +6,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Vuex from 'vuex';
 import storage from './storage/storage'
 import globals from './stories/globals';
+import router from './router'
 
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
@@ -15,6 +16,7 @@ Vue.use(Vuex)
 
 const vm = new Vue({
   render: h => h(App),
+  router,
   store: storage,
 })
 

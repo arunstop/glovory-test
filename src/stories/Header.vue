@@ -1,11 +1,11 @@
 <template>
   <div class="c-navbar">
     <div class="c-wrapper d-flex position-relative">
-      <a href="#" >
-      <img
-        class="logo"
-        src="https://assets.website-files.com/5fafb178b3236f251c2ec605/5fafe519c3163b6fd26dd449_logo-color.svg"
-      />
+      <a href="#">
+        <img
+          class="logo"
+          src="https://assets.website-files.com/5fafb178b3236f251c2ec605/5fafe519c3163b6fd26dd449_logo-color.svg"
+        />
       </a>
       <!-- v-model.lazy is for after input.value changed -->
       <input
@@ -53,16 +53,18 @@
           v-b-toggle.sidebar-right
         />
         <c-side-bar :_id="'sidebar-right'" />
-        <c-icon-button
-          _icon="person"
-          _icon-hovered="person-fill"
-          class="ml-2"
-          @click.native="m_login"
-        />
+        <router-link to="/about">
+          <c-icon-button
+            _icon="person"
+            _icon-hovered="person-fill"
+            class="ml-2"
+          />
+        </router-link>
       </div>
       <div
-        class="container-fluid position-absolute p-0 mx-0 c-search-bar-2 ani-bounce-in "
-        :style="{ display: h_hide_search_bar2nd }">
+        class="container-fluid position-absolute p-0 mx-0 c-search-bar-2 ani-bounce-in"
+        :style="{ display: h_hide_search_bar2nd }"
+      >
         <b-input-group>
           <b-form-input
             type="text"
@@ -183,5 +185,4 @@ export default {
     transform: scale(1);
   }
 }
-
 </style>
