@@ -133,7 +133,7 @@ export default {
           "success",
           () => {
             this.$store.dispatch("userSignOut");
-            alert(userData)
+            // alert(userData)
           },
           () => {}
         );

@@ -129,22 +129,17 @@
           </b-tab>
         </b-tabs>
       </b-card>
-      <b-row class="mx-auto mt-5">
-        <router-link to="/" class="btn btn-outline-primary p-2" replace>
-          <div class="d-flex">
-            <b-icon class="my-auto h3 mr-1" icon="arrow-left" />
-            <h5 class="my-auto">Back</h5>
-          </div>
-        </router-link>
-      </b-row>
+      <!-- BACK BUTTON -->
+      <c-back-button :_label="'Back'" :_path="'/'"/>
     </div>
   </div>
 </template>
 <script>
 import CInput from "../stories/Input.vue";
+import CBackButton from "../stories/BackButton.vue"
 
 export default {
-  components: { CInput },
+  components: { CInput,CBackButton},
   data() {
     return {
       tabIndex: 1,

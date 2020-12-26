@@ -9,7 +9,7 @@ const routes = [
     path: '/',
     name: 'Home',
     // component: Home
-    component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
+    component: () => import('../views/Home.vue')
   },
   {
     path: '/auth',
@@ -20,6 +20,11 @@ const routes = [
     component: Auth
     // component: () => import(/* webpackChunkName: "about" */ '../views/Auth.vue')
   },
+  {
+    path: '*',
+    name: 'NotFound',
+    component: () => import('../views/NotFound.vue')
+  }
 ]
 
 const router = new VueRouter({
