@@ -1,4 +1,10 @@
 export default {
     cartItem: 6,
-    productSearchQuery: ''
+    productSearchQuery: '',
+    userData : {
+        email : '',
+        password : '',
+        latestSession : '',
+        cartData : {}
+      }
 }

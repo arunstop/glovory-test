@@ -1,7 +1,6 @@
 <template>
   <div class="main-wrapper">
     <c-header
-      :user="user"
       @onLogin="onLogin"
       @onLogout="onLogout"
       @onCreateAccount="onCreateAccount"
@@ -32,9 +31,6 @@ export default {
   components: { CHeader, CCard, CFooter },
 
   props: {
-    user: {
-      type: String
-    },
     productData: { type: Object }
   },
   data() {

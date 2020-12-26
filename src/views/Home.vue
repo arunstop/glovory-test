@@ -19,9 +19,12 @@ export default {
       return this.$store.getters.generateLongId(120);
     },
     // vuex mapgetters helper
-    ...mapGetters(["generateId", "generateLongId"]),
+    ...mapGetters(["generateId", "generateLongId", "getUserData"]),
   },
   created: function () {
+    // console.log(this.$store.getters.getUserData)
+    // this.$store.dispatch('userSignOut')
+    // console.log(this.$store.getters.getUserData)
     console.log(this.$globals.props.appName);
   },
 };

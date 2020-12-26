@@ -12,7 +12,7 @@
           v-model="tabIndex"
         >
           <b-tab title="Sign in" active>
-            <b-form>
+            <b-form @submit.prevent="m_submit_sign_in">
               <h5>Welcome to</h5>
               <h2 class="c-text-primary">GLOVORYMART</h2>
               <c-input
@@ -154,7 +154,19 @@ export default {
       passwordInput: "",
     };
   },
-  methods: {},
+  methods: {
+    m_submit_sign_in() {
+      var newUserData = {
+        email: this.emailInput,
+        password: this.passwordInput,
+        latestSession: Date.now(),
+      };
+      this.$store.dispatch("userSignIn", newUserData);
+      var userData = this.$store.getters.getUserData;
+      this.$globals.ui.showToast("Welcome to glovory mart " + userData.email + "!");
+      this.$router.push('/')
+    },
+  },
   computed: {
     logoUrl() {
       return this.$globals.props.logoUrl;

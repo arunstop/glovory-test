@@ -17,26 +17,6 @@
       />
 
       <div class="ml-auto row mr-0">
-        <!-- <my-button
-            size="small"
-            @onClick="onLogout"
-            label="Log out"
-            v-if="user"
-          /> -->
-        <my-button
-          size="small"
-          @onClick="onLogin"
-          label="Log in"
-          v-if="!user"
-        />
-        <my-button
-          primary
-          size="small"
-          @onClick="onCreateAccount"
-          label="Sign up"
-          v-if="!user"
-        />
-
         <c-icon-button
           class="btn-icon-search ml-2"
           _icon="search"
@@ -51,13 +31,13 @@
           v-b-toggle.sidebar-right
         />
         <c-sidebar :_id="'sidebar-right'" />
-        <router-link to="/auth">
-          <c-icon-button
-            class="ml-2"
-            _icon="person"
-            _icon-hovered="person-fill"
-          />
-        </router-link>
+
+        <c-icon-button
+          class="ml-2"
+          _icon="person"
+          _icon-hovered="person-fill"
+          @click.native="m_auth()"
+        />
       </div>
       <div
         class="container-fluid position-absolute p-0 mx-0 c-search-bar-2 ani-bounce-in"
@@ -90,7 +70,6 @@
 <script>
 import "./global.css";
 import "./header.css";
-import MyButton from "./Button.vue";
 import CSidebar from "./Sidebar.vue";
 import CIconButton from "./IconButton.vue";
 import { mapState } from "vuex";
@@ -102,7 +81,7 @@ export default {
     return { showSearchBar2nd: false };
   },
 
-  components: { MyButton, CSidebar, CIconButton },
+  components: { CSidebar, CIconButton },
 
   props: {
     user: {
@@ -144,9 +123,21 @@ export default {
     m_search_product(input) {
       this.$store.dispatch("searchProduct", input.target.value);
     },
-    m_login() {
-      // this.$bvToast.show("kekw");
-      alert("Login");
+    m_auth() {
+      var userData = this.$store.getters.getUserData;
+      if (userData.email === "" || userData.email === undefined) {
+        this.$router.push("/auth");
+      } else {
+        this.$globals.ui.showModal(
+          "Do you want to sign out from this session and account?",
+          "success",
+          () => {
+            this.$store.dispatch("userSignOut");
+            alert(userData)
+          },
+          () => {}
+        );
+      }
     },
     m_toggle_search_bar_2nd() {
       this.showSearchBar2nd = !this.showSearchBar2nd;
