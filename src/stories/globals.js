@@ -45,7 +45,8 @@ const _default = (vueInstance) => ({
   props:{
     appName : "Mobile Suit Gundam: Char's Counterattack",
     apiKey1 : "",
-    apiKey2 : ""
+    apiKey2 : "",
+    logoUrl : "https://assets.website-files.com/5fafb178b3236f251c2ec605/5fafe519c3163b6fd26dd449_logo-color.svg"
 
   },
   ui: {

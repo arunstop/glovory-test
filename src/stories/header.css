@@ -1,4 +1,4 @@
-.c-navbar{
+.c-navbar {
   box-shadow: 1px 0 20px 0 rgba(0, 0, 0, 0.2);
   position: fixed;
   width: 100%;
@@ -18,12 +18,6 @@
   max-height: 48px; */
 }
 
-.logo{
-  margin-top: 4px;
-    margin-bottom: 4px;
-  height:40px;
-}
-
 .input-search {
   margin-left: 60px;
   height: 48px !important;
@@ -40,22 +34,4 @@
   background-repeat: no-repeat;
   font-size: 0.9375em;
   line-height: 1.5em;
-}
-
-svg {
-  display: inline-block;
-  vertical-align: top;
-}
-
-h1 {
-  font-weight: 900;
-  font-size: 20px;
-  line-height: 1;
-  margin: 6px 0 6px 10px;
-  display: inline-block;
-  vertical-align: top;
-}
-
-button + button {
-  margin-left: 10px;
 }

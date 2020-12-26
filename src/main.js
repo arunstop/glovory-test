@@ -17,9 +17,11 @@ Vue.use(Vuex)
 const vm = new Vue({
   render: h => h(App),
   router,
+  //store is for reactive variables
   store: storage,
 })
 
+//global is for statics variables
 Vue.prototype.$globals = new globals(vm)
 
 

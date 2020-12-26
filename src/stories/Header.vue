@@ -2,10 +2,7 @@
   <div class="c-navbar">
     <div class="c-wrapper d-flex position-relative">
       <a href="#">
-        <img
-          class="logo"
-          src="https://assets.website-files.com/5fafb178b3236f251c2ec605/5fafe519c3163b6fd26dd449_logo-color.svg"
-        />
+        <img class="logo" :src="logoUrl" />
       </a>
       <!-- v-model.lazy is for after input.value changed -->
       <input
@@ -47,17 +44,18 @@
           @click.native="m_toggle_search_bar_2nd"
         />
         <c-icon-button
+          class="ml-2"
           _icon="bag-check"
           _icon-hovered="bag-check-fill"
           :_badgeLabel="data_cart_item"
           v-b-toggle.sidebar-right
         />
-        <c-side-bar :_id="'sidebar-right'" />
-        <router-link to="/about">
+        <c-sidebar :_id="'sidebar-right'" />
+        <router-link to="/auth">
           <c-icon-button
+            class="ml-2"
             _icon="person"
             _icon-hovered="person-fill"
-            class="ml-2"
           />
         </router-link>
       </div>
@@ -93,7 +91,7 @@
 import "./global.css";
 import "./header.css";
 import MyButton from "./Button.vue";
-import CSideBar from "./Sidebar.vue";
+import CSidebar from "./Sidebar.vue";
 import CIconButton from "./IconButton.vue";
 import { mapState } from "vuex";
 
@@ -104,7 +102,7 @@ export default {
     return { showSearchBar2nd: false };
   },
 
-  components: { MyButton, CSideBar, CIconButton },
+  components: { MyButton, CSidebar, CIconButton },
 
   props: {
     user: {
@@ -127,6 +125,9 @@ export default {
     },
     h_hide_search_bar2nd() {
       return this.showSearchBar2nd ? "block" : "none";
+    },
+    logoUrl() {
+      return this.$globals.props.logoUrl;
     },
   },
 
