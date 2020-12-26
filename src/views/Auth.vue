@@ -1,8 +1,8 @@
 <template>
   <div class="w-100 d-flex px-3 pt-3 pb-5">
-    <div class="m-auto p-0 d-flex flex-column c-login-panel">
+    <div class="m-auto p-0 d-flex flex-column c-auth-panel">
       <img class="c-logo-auth mx-auto" :src="logoUrl" />
-      <b-card class="p-0 mt-3" no-body>
+      <b-card class="p-0 mt-3 shadow" no-body>
         <b-tabs
           class="m-0"
           content-class="mx-3 my-2"
@@ -11,36 +11,41 @@
           card
           v-model="tabIndex"
         >
-          <b-tab title="Login" active>
+          <b-tab title="Sign in" active>
             <b-form>
               <h5>Welcome to</h5>
               <h2 class="c-text-primary">GLOVORYMART</h2>
               <c-input
                 class="mt-3 w-100"
-                :_withIcon="true"
+                _withIcon
                 :_iconName="'envelope'"
                 :_state="emailState"
                 :_placeHolder="'Email...'"
                 :_type="'email'"
+                _required
                 v-model="dataEmailInput"
               />
 
               <c-input
                 class="mt-3 w-100"
-                :_withIcon="true"
+                _withIcon
                 :_iconName="'key'"
                 :_state="passwordState"
                 :_placeHolder="'Password...'"
                 :_type="'password'"
+                _required
                 v-model="dataPasswordInput"
               />
-
-              <b-button class="mt-5" block variant="primary" pill>
-                Login
+              <b-row class="m-0 mt-3">
+                <a class="my-auto clickable">Forgot Password?</a>
+                <b-form-checkbox class="ml-auto">Remember me!</b-form-checkbox>
+              </b-row>
+              <b-button type="submit" class="mt-3" block variant="primary" pill>
+                Sign in
               </b-button>
               <b-button class="mt-3" variant="light" @click="tabIndex++">
-                <u
-                  >Don't have an account yet? <br />
+                <u>
+                  Don't have an account yet? <br />
                   Register here!
                 </u>
               </b-button>
@@ -51,11 +56,12 @@
               <h5>Fill in the form to join us!</h5>
               <c-input
                 class="mt-3 w-100"
-                :_withIcon="true"
+                _withIcon
                 :_iconName="'envelope'"
                 :_state="emailState"
                 :_placeHolder="'Email...'"
                 :_type="'email'"
+                _required
                 v-model="dataEmailInput"
               />
 
@@ -65,6 +71,7 @@
                 :_state="null"
                 :_placeHolder="'First Name...'"
                 :_type="'text'"
+                _required
               />
               <c-input
                 class="mt-3 w-100"
@@ -72,43 +79,64 @@
                 :_state="null"
                 :_placeHolder="'Last Name...'"
                 :_type="'text'"
+                _required
               />
 
               <c-input
                 class="mt-3 w-100"
-                :_withIcon="true"
+                _withIcon
                 :_iconName="'key'"
                 :_state="passwordState"
                 :_placeHolder="'Password...'"
                 :_type="'password'"
+                _required
                 v-model="dataPasswordInput"
               />
 
               <c-input
                 class="mt-3 w-100"
-                :_withIcon="true"
+                _withIcon
                 :_iconName="'lock'"
                 :_state="null"
                 :_placeHolder="'Confirm Password...'"
                 :_type="'password'"
+                _required
               />
 
               <c-input
                 class="mt-3 w-100"
-                :_withIcon="true"
+                _withIcon
                 :_iconName="'telephone'"
                 :_state="null"
                 :_placeHolder="'Telephone... (eg. 081234567890)'"
                 :_type="'number'"
+                _required
               />
 
-              <b-button class="mt-5" block variant="primary">
+              <b-button type="submit" class="mt-5" block variant="primary" pill>
                 Register
+              </b-button>
+              <b-button type="reset" class="mt-2" block variant="danger" pill>
+                Reset
+              </b-button>
+              <b-button class="mt-3" variant="light" @click="tabIndex--">
+                <u>
+                  Already have account? <br />
+                  Sign in here!
+                </u>
               </b-button>
             </b-form>
           </b-tab>
         </b-tabs>
       </b-card>
+      <b-row class="mx-auto mt-5">
+        <router-link to="/" class="btn btn-outline-primary p-2" replace>
+          <div class="d-flex">
+            <b-icon class="my-auto h3 mr-1" icon="arrow-left" />
+            <h5 class="my-auto">Back</h5>
+          </div>
+        </router-link>
+      </b-row>
     </div>
   </div>
 </template>
@@ -162,7 +190,7 @@ export default {
 </script>
 
 <style scoped>
-.c-login-panel {
+.c-auth-panel {
   width: 100%;
   max-width: 540px !important;
 }

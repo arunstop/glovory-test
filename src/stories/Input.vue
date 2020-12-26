@@ -16,6 +16,7 @@
       :state="_state"
       :placeholder="_placeHolder"
       :type="_type"
+      :required="_required"
       :value="value"
       @input.native="$emit('input', $event.target.value)"
     >
@@ -37,6 +38,7 @@ export default {
         _state: Boolean,
         _placeHolder: String,
         _type: String,
+        _required: Boolean,
         value: String, // for v-model
     }
 };
