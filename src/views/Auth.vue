@@ -16,7 +16,7 @@
               <h5>Welcome to</h5>
               <h2 class="c-text-primary">GLOVORYMART</h2>
               <c-input
-                class="mt-3 w-100"
+                class="mt-5 w-100"
                 _withIcon
                 :_iconName="'envelope'"
                 :_state="emailState"
@@ -40,7 +40,7 @@
                 <a class="my-auto clickable">Forgot Password?</a>
                 <b-form-checkbox class="ml-auto">Remember me!</b-form-checkbox>
               </b-row>
-              <b-button type="submit" class="mt-3" block variant="primary" pill>
+              <b-button type="submit" class="mt-5" block variant="primary" pill>
                 Sign in
               </b-button>
               <b-button class="mt-3" variant="light" @click="tabIndex++">
@@ -55,7 +55,7 @@
             <b-form>
               <h5>Fill in the form to join us!</h5>
               <c-input
-                class="mt-3 w-100"
+                class="mt-5 w-100"
                 _withIcon
                 :_iconName="'envelope'"
                 :_state="emailState"
