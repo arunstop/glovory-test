@@ -106,4 +106,12 @@ body {
   margin-bottom: 4px;
   height: 40px;
 }
+
+.c-c-bg{
+  background-color: #f5f6f8;
+}
+
+.c-bg-translucent{
+  background-color: rgba(245,246,248,0.6);
+}
 </style>
