@@ -32,13 +32,34 @@
         />
         <c-sidebar :_id="'sidebar-right'" />
 
-        <c-icon-button
-          class="ml-2"
-          _icon="person"
-          _icon-hovered="person-fill"
-          @click.native="m_auth()"
-        />
+        <!-- <c-icon-button class="ml-2" _icon="person" _icon-hovered="person-fill" @click.native="m_toggle_dropdown" /> -->
+
+        <b-dropdown
+          size="sm"
+          variant="light"
+          no-caret
+          toggle-class="ml-2 p-0 border-0"
+          toggle-tag="div"
+        >
+          <template #button-content>
+            <c-icon-button
+              _icon="person"
+              _icon-hovered="person-fill"
+              @click.native="m_auth"
+            />
+          </template>
+          <b-dropdown-item>Account Settings</b-dropdown-item>
+          <b-dropdown-item>Preferences</b-dropdown-item>
+          <b-dropdown-item>Help</b-dropdown-item>
+          <b-dropdown-divider></b-dropdown-divider>
+          <b-dropdown-item @click="m_auth_sign_out"
+            ><b-icon icon="box-arrow-left" /><b class="ml-2"
+              >Sign out</b
+            ></b-dropdown-item
+          >
+        </b-dropdown>
       </div>
+
       <div
         class="container-fluid position-absolute p-0 mx-0 c-search-bar-2 ani-bounce-in"
         :style="{ display: h_hide_search_bar2nd }"
@@ -57,9 +78,9 @@
           />
 
           <b-input-group-append class="bg-light">
-            <b-button variant="outline-danger" @click="m_toggle_search_bar_2nd"
-              ><h3 aria-hidden="true" class="m-0">&times;</h3></b-button
-            >
+            <b-button variant="outline-danger" @click="m_toggle_search_bar_2nd">
+              <h3 aria-hidden="true" class="m-0">&times;</h3>
+            </b-button>
           </b-input-group-append>
         </b-input-group>
       </div>
@@ -108,6 +129,17 @@ export default {
     logoUrl() {
       return this.$globals.props.logoUrl;
     },
+    isSignedIn() {
+      var userData = this.$store.getters.getUserData;
+      if (userData.email === "" || userData.email === undefined) {
+        // alert('signed out')
+        return false;
+      }else{
+        // alert('signed in')
+        return true
+      }
+      
+    },
   },
 
   methods: {
@@ -123,23 +155,29 @@ export default {
     m_search_product(input) {
       this.$store.dispatch("searchProduct", input.target.value);
     },
+    
     m_auth() {
-      var userData = this.$store.getters.getUserData;
-      if (userData.email === "" || userData.email === undefined) {
+      // alert(this.$store.getters.getUserData.email + ' then ' + this.isSignedIn)
+      if (this.isSignedIn == false) {
         this.$router.push("/auth");
-      } else {
-        this.$globals.ui.showModal(
-          "Do you want to sign out from this session and account?",
-          "success",
-          () => {
-            this.$store.dispatch("userSignOut");
-            // alert(userData)
-          },
-          () => {}
-        );
       }
     },
+    m_auth_sign_out() {
+      this.$globals.ui.showModal(
+        "Do you want to sign out from this session and account?",
+        "success",
+        () => {
+          this.$store.dispatch("userSignOut");
+          // alert(userData)
+        },
+        () => {}
+      );
+    },
     m_toggle_search_bar_2nd() {
+      this.showSearchBar2nd = !this.showSearchBar2nd;
+      // alert(this.showSearchBar2nd)
+    },
+    m_toggle_drop_down() {
       this.showSearchBar2nd = !this.showSearchBar2nd;
       // alert(this.showSearchBar2nd)
     },

@@ -19,6 +19,7 @@
       :required="_required"
       :value="value"
       @input.native="$emit('input', $event.target.value)"
+      trim
     >
     </b-form-input>
   </b-input-group>

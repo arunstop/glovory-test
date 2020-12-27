@@ -32,7 +32,7 @@
                   _withIcon
                   :_iconName="'key'"
                   :_state="passwordState"
-                  :_placeHolder="'Password...'"
+                  :_placeHolder="'Password... (min. 8 chars)'"
                   :_type="'password'"
                   _required
                   v-model="dataPasswordInput"
@@ -167,6 +167,12 @@ export default {
   },
   methods: {
     m_submit_sign_in() {
+        // alert(this.emailState + '&&' +this.passwordState)
+
+      if(this.emailState == false || this.passwordState == false){
+        // alert('KAPPA')
+        return false
+      }
       var newUserData = {
         email: this.emailInput,
         password: this.passwordInput,
