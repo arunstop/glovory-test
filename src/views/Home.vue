@@ -25,7 +25,7 @@ export default {
     // console.log(this.$store.getters.getUserData)
     // this.$store.dispatch('userSignOut')
     // console.log(this.$store.getters.getUserData)
-    console.log(this.$globals.props.appName);
+    // console.log(this.$globals.props.appName);
   },
 };
 </script>

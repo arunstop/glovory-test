@@ -8,7 +8,7 @@
     <div class="content-wrapper">
       <b-row class="w-layout-grid">
         <c-card
-          v-for="product in evenNumbers"
+          v-for="product in productResult"
           :key="product.id"
           :productData="product"
         />
@@ -36,7 +36,6 @@ export default {
   data() {
     return {
       productList: productJSON,
-      kappa : this.$store.state.productSearchQuery
     };
   },
 
@@ -44,7 +43,7 @@ export default {
     search_query() {
       return this.$store.state.productSearchQuery;
     },
-    evenNumbers: function(){
+    productResult: function(){
       const sq = this.search_query.toLowerCase();
       return this.productList.data.filter(function(data){
         return data.name.toLowerCase().includes(sq)

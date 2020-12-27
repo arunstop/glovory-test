@@ -43,7 +43,7 @@ const _default = (vueInstance) => ({
   //getting vue instance from main.js
   //then using it like injection $['injectionname]
   props:{
-    appName : "Mobile Suit Gundam: Char's Counterattack",
+    appName : "Glovory Test",
     apiKey1 : "",
     apiKey2 : "",
     logoUrl : "https://assets.website-files.com/5fafb178b3236f251c2ec605/5fafe519c3163b6fd26dd449_logo-color.svg",
@@ -135,7 +135,7 @@ export default _default;
 // export default () => {
 //   this.$bvToast.toast('Toast body content', {
 //     title: 'Toast test',
-//     variant: 'succes',
+//     variant: 'success',
 //     solid: true
 //   })
 

@@ -24,5 +24,4 @@ const vm = new Vue({
 //global is for statics variables
 Vue.prototype.$globals = new globals(vm)
 
-
 vm.$mount('#app')
