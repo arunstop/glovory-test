@@ -66,7 +66,7 @@
       >
         <b-input-group>
           <b-form-input
-            type="text"
+            type="search"
             class="input-search mx-0"
             maxlength="256"
             name="Search2nd"
@@ -78,8 +78,8 @@
           />
 
           <b-input-group-append class="bg-light">
-            <b-button variant="outline-danger" @click="m_toggle_search_bar_2nd">
-              <h3 aria-hidden="true" class="m-0">&times;</h3>
+            <b-button variant="outline-secondary" @click="m_toggle_search_bar_2nd">
+              <h5 aria-hidden="true" class="m-0"><b-icon icon="caret-down-fill"/></h5>
             </b-button>
           </b-input-group-append>
         </b-input-group>
