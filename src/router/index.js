@@ -15,7 +15,7 @@ const routes = [
   {
     path: '/auth',
     name: 'auth',
-    meta: { auth:true, title: 'Auth'},
+    meta: { auth:true, title: 'Authentication'},
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -23,11 +23,17 @@ const routes = [
     // component: () => import(/* webpackChunkName: "about" */ '../views/Auth.vue')
   },
   {
+    path: '/product/:id',
+    name: 'product details',
+    meta: { auth:true, title: 'Product Details'},
+    component: () => import('../views/ProductDetails.vue')
+  },
+  {
     path: '*',
     name: 'notfound',
     meta: { auth:true, title: 'Page Not Found'},
     component: () => import('../views/NotFound.vue')
-  }
+  },
 ]
 
 const router = new VueRouter({

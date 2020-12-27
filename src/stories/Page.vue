@@ -8,6 +8,8 @@
     <div class="content-wrapper">
       <b-row class="w-layout-grid">
         <c-card
+          class="clickable"
+          @click.native="navProductDetails(product.id)"
           v-for="product in productResult"
           :key="product.id"
           :productData="product"
@@ -31,7 +33,7 @@ export default {
   components: { CHeader, CCard, CFooter },
 
   props: {
-    productData: { type: Object }
+    productData: { type: Object },
   },
   data() {
     return {
@@ -39,16 +41,16 @@ export default {
     };
   },
 
-  computed:{
+  computed: {
     search_query() {
       return this.$store.state.productSearchQuery;
     },
-    productResult: function(){
+    productResult: function () {
       const sq = this.search_query.toLowerCase();
-      return this.productList.data.filter(function(data){
-        return data.name.toLowerCase().includes(sq)
-      })
-    }
+      return this.productList.data.filter(function (data) {
+        return data.name.toLowerCase().includes(sq);
+      });
+    },
   },
 
   methods: {
@@ -60,8 +62,16 @@ export default {
     },
     onCreateAccount() {
       this.$emit("onCreateAccount");
+    },
+    navProductDetails(id){
+      //with NAME
+      // this.$router.push({name: "product details", params:{id:id}})
+      
+      //with PATH
+      // using ` backtick/grave accent
+      this.$router.push({path: `/product/${id}`})
     }
-  }
+  },
 };
 </script>
 

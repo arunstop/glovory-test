@@ -8,7 +8,7 @@
 import mixins from './plugins/mixins'
 export default {
   name: 'App',
-  mixins : [mixins],
+  mixins : mixins,
   watch: mixins.pageTitleWatcher
 }
 </script>

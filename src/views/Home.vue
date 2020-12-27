@@ -1,5 +1,5 @@
 <template>
-  <Page user="Arunstop" />
+  <Page />
 </template>
 
 <script>
