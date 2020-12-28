@@ -3,10 +3,10 @@ export default {
         state.productSearchQuery = query
         // console.log(query)
     },
-    CART_ADD(state, id) {
+    CART_ADD(state, productId) {
         let itemList = state.userData.cartData
         if (itemList.length === 0) {
-            itemList.push({ productId: id, qty: 0 })
+            itemList.push({ productId: productId, qty: 1 })
         } else {
             // checking if productId already exists
             // then product will not be added to cart
@@ -14,18 +14,32 @@ export default {
             // The .some() method tests whether at least one element in the 
             // array passes the test implemented by the provided function. 
             // It returns a Boolean value
-            if (!itemList.some(a => a.productId===id)) {
+            if (!itemList.some(a => a.productId === productId)) {
                 // alert('no duplicates')
-                itemList.push({ productId: id, qty: 0 })
+                itemList.push({ productId: productId, qty: 1 })
             }
         }
     },
-    CART_REMOVE(state, id) {
+    CART_REMOVE(state, productId) {
         let itemList = state.userData.cartData
-        state.userDate.cartData = itemList.filter(a => a.productId != id)
+        state.userData.cartData = itemList.filter(a => a.productId != productId)
     },
     CART_EMPTY(state) {
         state.userData.cartData = []
+    },
+    CART_MINUS_ITEM_QTY(state, productId) {
+        let itemList = state.userData.cartData
+        let itemResult = itemList.filter(a => a.productId === productId)[0]
+        if (itemResult.qty > 1) {
+            itemResult.qty--
+        }
+    },
+    CART_PLUS_ITEM_QTY(state, productId) {
+        let itemList = state.userData.cartData
+        let itemResult = itemList.filter(a => a.productId === productId)[0]
+        if (itemResult.qty < 10) {
+            itemResult.qty++
+        }
     },
     USER_SIGN_IN(state, newUserData) {
         state.userData = newUserData

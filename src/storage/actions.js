@@ -1,20 +1,26 @@
 export default {
-    addToCart({ commit }, id) {
-        commit('CART_ADD', id)
+    addToCart({ commit }, productId) {
+        commit('CART_ADD', productId)
     },
-    removeFromCart({ commit }, id) {
-        commit('CART_REMOVE', id)
+    removeFromCart({ commit }, productId) {
+        commit('CART_REMOVE', productId)
     },
     emptyCart({ commit }) {
         commit('CART_EMPTY')
     },
-    searchProduct({commit}, keyword){
+    minusCartItemQty({ commit }, productId) {
+        commit('CART_MINUS_ITEM_QTY', productId)
+    },
+    plusCartItemQty({ commit }, productId) {
+        commit('CART_PLUS_ITEM_QTY', productId)
+    },
+    searchProduct({ commit }, keyword) {
         commit('PRODUCT_SEARCH', keyword)
     },
-    userSignIn({commit}, newUserData){
+    userSignIn({ commit }, newUserData) {
         commit('USER_SIGN_IN', newUserData)
     },
-    userSignOut({commit}){
+    userSignOut({ commit }) {
         commit('USER_SIGN_OUT')
     }
 }

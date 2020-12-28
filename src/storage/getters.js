@@ -9,6 +9,12 @@ export default {
     getUserData: (state) => {
         return state.userData;
     },
+    getCartData: (state) => {
+        return state.userData.cartData
+    },
+    getCartDataById: (state) => (id) => {
+        return state.userData.cartData.filter(a => a.productId === id)
+    },
     isSignedIn: (state) => {
         let email = state.userData.email
         let password = state.userData.password

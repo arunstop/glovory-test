@@ -6,11 +6,11 @@
       </div>
       <div class="c-cart-center mr-auto">
         <div class="d-block">
-          <p class="mt-0 c-max-lines-2 ">{{ productData.name }}</p>
+          <p class="mt-0 c-max-lines-2">{{ productData.name }}</p>
           <div class="d-flex mt-3">
-            <b-button class="c-btn-qty" variant="outline-secondary">-</b-button>
-            <b class="c-item-qty my-auto">1</b>
-            <b-button class="c-btn-qty" variant="outline-secondary">+</b-button>
+            <b-button class="c-btn-qty" variant="outline-secondary" @click="m_minus_qty">-</b-button>
+            <b class="c-item-qty my-auto">{{ productQtyCart }}</b>
+            <b-button class="c-btn-qty" variant="outline-secondary" @click="m_plus_qty">+</b-button>
           </div>
         </div>
       </div>
@@ -19,14 +19,16 @@
         <b-button class="ml-auto" variant="light" @click="m_remove">
           <b-icon icon="trash-fill" style="color: #c5cee0" />
         </b-button>
-        <span class="c-item-price ml-auto mt-auto text-block font-weight-bold"
-          >{{productData.priceLabel}}</span
+        <span
+          class="c-item-price ml-auto mt-auto text-block font-weight-bold"
+          >{{ productData.priceLabel }}</span
         >
       </div>
     </div>
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "c-cart-item",
   props: {
@@ -38,22 +40,32 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(["getCartData", "getCartDataById"]),
     productData() {
       let productList = this.$globals.props.productDummy;
       let productListByParams = productList.data.filter(
         (a) => a.id === this._id
       );
-      console.log(productList);
+      // console.log(this.getCartDataById(this._id));
       //because .filter() returns an array
       //therefore getting the first index [0] is a must
       return productListByParams[0];
     },
+    productQtyCart() {
+      return this.getCartDataById(this._id)[0].qty;
+    },
   },
   methods: {
     m_remove() {
-      console.log("clicked");
+      // console.log("clicked");
       // this.visible = false;
-      this.$store.dispatch("cartRemove");
+      this.$store.dispatch("removeFromCart", this._id);
+    },
+    m_minus_qty() {
+      this.$store.dispatch('minusCartItemQty', this._id)
+    },
+    m_plus_qty() {
+      this.$store.dispatch('plusCartItemQty', this._id)
     },
   },
   created: function () {
