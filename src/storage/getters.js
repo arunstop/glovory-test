@@ -9,11 +9,12 @@ export default {
     getUserData: (state) => {
         return state.userData;
     },
-    isSignedIn: () => {
-        let email = localStorage.getItem('email')
-        let password = localStorage.getItem('password')
-        let latestSession = localStorage.getItem('latestSession')
-        if (email && password && latestSession ) {
+    isSignedIn: (state) => {
+        let email = state.userData.email
+        let password = state.userData.password
+        let latestSession = state.userData.latestSession
+        // console.log(email + ' // ' + password + ' // ' + latestSession)
+        if (email != null && password != null && latestSession != null) {
             return true;
         } else {
             return false

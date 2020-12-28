@@ -13,13 +13,14 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(Vuex)
 
-if (storage.getters.isSignedIn === true) {
-  var newUserData = {
-    email: localStorage.getItem('email'),
-    password: localStorage.getItem('password'),
-    latestSession: localStorage.getItem('latestSession'),
-  };
-  storage.dispatch("userSignIn", newUserData);
+var localUserData = {
+  email: localStorage.getItem('email'),
+  password: localStorage.getItem('password'),
+  latestSession: localStorage.getItem('latestSession'),
+};
+if (localUserData.email != null) {
+
+  storage.dispatch("userSignIn", localUserData);
 }
 
 const vm = new Vue({

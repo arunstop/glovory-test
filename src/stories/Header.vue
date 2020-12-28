@@ -78,8 +78,13 @@
           />
 
           <b-input-group-append class="bg-light">
-            <b-button variant="outline-secondary" @click="m_toggle_search_bar_2nd">
-              <h5 aria-hidden="true" class="m-0"><b-icon icon="caret-down-fill"/></h5>
+            <b-button
+              variant="outline-secondary"
+              @click="m_toggle_search_bar_2nd"
+            >
+              <h5 aria-hidden="true" class="m-0">
+                <b-icon icon="caret-down-fill" />
+              </h5>
             </b-button>
           </b-input-group-append>
         </b-input-group>
@@ -130,15 +135,7 @@ export default {
       return this.$globals.props.logoUrl;
     },
     isSignedIn() {
-      var userData = this.$store.getters.getUserData;
-      if (userData.email === "" || userData.email === undefined) {
-        // alert('signed out')
-        return false;
-      }else{
-        // alert('signed in')
-        return true
-      }
-      
+      return this.$store.getters.isSignedIn;
     },
   },
 
@@ -155,7 +152,7 @@ export default {
     m_search_product(input) {
       this.$store.dispatch("searchProduct", input.target.value);
     },
-    
+
     m_auth() {
       // alert(this.$store.getters.getUserData.email + ' then ' + this.isSignedIn)
       if (this.isSignedIn == false) {

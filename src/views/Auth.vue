@@ -183,7 +183,9 @@ export default {
       this.$globals.ui.showToast(
         "Welcome to glovory mart " + userData.email + "!"
       );
-      this.$router.push("/");
+      if (this.$store.getters.isSignedIn) {
+        this.$router.push("/");
+      }
     },
   },
   computed: {
@@ -218,7 +220,7 @@ export default {
     },
   },
   beforeCreate: function () {
-    if (this.$store.getters.isSignedIn === true) {
+    if (this.$store.getters.isSignedIn) {
       this.$router.replace("/");
     }
   },
