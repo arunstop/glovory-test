@@ -49,7 +49,7 @@ export default {
     m_addTocart() {
       this.$store.dispatch("addToCart", this.productData.id);
       // alert(this.$store.state.cartItem)
-      console.log(this.$store.state.userData.cartData)
+      // console.log(this.$store.state.userData.cartData)
     },
     m_toast() {
       this.$bvToast.show(this.toastId);

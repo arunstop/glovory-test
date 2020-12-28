@@ -1,14 +1,12 @@
 <template>
+  <div>
     <div class="d-flex c-cart-wrapper py-3 ani-bounce-in">
       <div class="c-cart-left">
-        <img
-          class="c-cart-img"
-          src="https://assets.website-files.com/5fafb178b3236f251c2ec605/5fb0e546bd22a06c5c340cf5_qtela.png"
-        />
+        <img class="c-cart-img" src="https://assets.website-files.com/5fafb178b3236f251c2ec605/5fb0e546bd22a06c5c340cf5_qtela.png"/>
       </div>
       <div class="c-cart-center mr-auto">
         <div class="d-block">
-          <p>FRISIAN FLAG UHT Purefarm Cokelat 225 ml</p>
+          <p>{{ productData.name }}</p>
           <div class="d-flex mt-3">
             <b-button class="c-btn-qty" variant="outline-secondary">-</b-button>
             <b class="c-item-qty my-auto">1</b>
@@ -18,34 +16,53 @@
       </div>
       <div class="c-cart-right d-flex flex-column ml-auto">
         <!-- remove item from cart -->
-        <b-button class="ml-auto" variant="light" @click="m_remove" >
+        <b-button class="ml-auto" variant="light" @click="m_remove">
           <b-icon icon="trash-fill" style="color: #c5cee0" />
         </b-button>
         <p class="c-item-price mt-auto text-block font-weight-bold">Rp 7.000</p>
       </div>
     </div>
+  </div>
 </template>
 <script>
 export default {
   name: "c-cart-item",
+  props: {
+    _id: String,
+  },
   data() {
     return {
       visible: true,
     };
   },
+  computed: {
+    productData() {
+      let productList = this.$globals.props.productDummy;
+      let productListByParams = productList.data.filter(
+        (a) => a.id === this._id
+      );
+      console.log(productList);
+      //because .filter() returns an array
+      //therefore getting the first index [0] is a must
+      return productListByParams[0];
+    },
+  },
   methods: {
     m_remove() {
-      console.log('clicked');
+      console.log("clicked");
       // this.visible = false;
-      this.$store.dispatch('cartRemove')
+      this.$store.dispatch("cartRemove");
     },
+  },
+  created: function () {
+    // alert(this._id);
   },
 };
 </script>
 <style scoped>
 /* add this to bounce when opening sidebar */
-.ani-bounce-in{
-  animation: bounce-in .6s;
+.ani-bounce-in {
+  animation: bounce-in 0.6s;
 }
 
 .c-cart-wrapper {
@@ -84,10 +101,10 @@ export default {
 }
 /* animation */
 .bounce-in-enter-active {
-  animation: bounce-in .5s;
+  animation: bounce-in 0.5s;
 }
 .bounce-in-leave-active {
-  animation: bounce-in .5s reverse;
+  animation: bounce-in 0.5s reverse;
 }
 @keyframes bounce-in {
   0% {
@@ -100,5 +117,4 @@ export default {
     transform: scale(1);
   }
 }
-
 </style>

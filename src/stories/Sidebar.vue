@@ -45,9 +45,11 @@
             />
           </div>
           <div class="c-sidebar-content column p-3">
-            <div v-for="item in data_cart" :key="item.id">
-              <c-cart-item />
-            </div>
+            <c-cart-item
+              v-for="item in data_cart"
+              :key="item.id"
+              :_id="item.productId.toString()"
+            />
           </div>
           <div class="c-sidebar-footer mt-auto p-3">
             <b-button
@@ -118,11 +120,11 @@ export default {
         "All of your items in the cart will be removed and the action cannot be undone. Are you sure?",
         "success",
         () => {
-        this.$store.dispatch("emptyCart");
-        this.$globals.ui.showToast("Cart has been emptied");
-        //closing sidebar with reference
-        this.$refs[this._id].hide();
-      },
+          this.$store.dispatch("emptyCart");
+          this.$globals.ui.showToast("Cart has been emptied");
+          //closing sidebar with reference
+          this.$refs[this._id].hide();
+        },
         () => {}
       );
     },
