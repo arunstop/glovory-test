@@ -2,11 +2,11 @@
   <div>
     <div class="d-flex c-cart-wrapper py-3 ani-bounce-in">
       <div class="c-cart-left">
-        <img class="c-cart-img" src="https://assets.website-files.com/5fafb178b3236f251c2ec605/5fb0e546bd22a06c5c340cf5_qtela.png"/>
+        <img class="c-cart-img" :src="productData.src" />
       </div>
       <div class="c-cart-center mr-auto">
         <div class="d-block">
-          <p>{{ productData.name }}</p>
+          <p class="mt-0 c-max-lines-2 ">{{ productData.name }}</p>
           <div class="d-flex mt-3">
             <b-button class="c-btn-qty" variant="outline-secondary">-</b-button>
             <b class="c-item-qty my-auto">1</b>
@@ -19,7 +19,9 @@
         <b-button class="ml-auto" variant="light" @click="m_remove">
           <b-icon icon="trash-fill" style="color: #c5cee0" />
         </b-button>
-        <p class="c-item-price mt-auto text-block font-weight-bold">Rp 7.000</p>
+        <span class="c-item-price ml-auto mt-auto text-block font-weight-bold"
+          >{{productData.priceLabel}}</span
+        >
       </div>
     </div>
   </div>
@@ -65,6 +67,14 @@ export default {
   animation: bounce-in 0.6s;
 }
 
+.c-max-lines-2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
 .c-cart-wrapper {
   border-bottom: 1px solid #e4e9f2;
 }
@@ -79,6 +89,7 @@ export default {
 }
 
 .c-cart-center {
+  width: 100%;
   margin-left: 20px;
 }
 

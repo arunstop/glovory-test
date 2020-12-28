@@ -13,7 +13,7 @@
       lazy
     >
       <template #default="{ hide }">
-        <div class="d-flex flex-column">
+        <div class="d-flex flex-column h-100">
           <div class="c-sidebar-header row p-3 align-items-center">
             <b-button
               type="button"
