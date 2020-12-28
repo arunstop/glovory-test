@@ -25,8 +25,8 @@
               <span aria-hidden="true">&times;</span>
             </b-button>
             <b class="mx-3">
-              Cart ({{ data_cart_item }} item{{
-                data_cart_item > 1 ? "s" : ""
+              Cart ({{ data_cart.length }} item{{
+                data_cart.length > 1 ? "s" : ""
               }})
             </b>
             <b-button class="ml-auto" variant="light" @click="m_empty_cart1()">
@@ -45,7 +45,7 @@
             />
           </div>
           <div class="c-sidebar-content column p-3">
-            <div v-for="index in data_cart_item" :key="index">
+            <div v-for="item in data_cart" :key="item.id">
               <c-cart-item />
             </div>
           </div>
@@ -58,7 +58,7 @@
                 hide();
                 purchaseHandler();
               "
-              v-if="data_cart_item > 0"
+              v-if="data_cart.length > 0"
             >
               <span class="my-auto">Purchase Order</span>
               <h6 class="font-weight-bold my-auto">Rp 28.000</h6>
@@ -82,8 +82,8 @@ export default {
     _id: String,
   },
   computed: {
-    data_cart_item() {
-      return this.$store.state.cartItem;
+    data_cart() {
+      return this.$store.state.userData.cartData;
     },
   },
   methods: {

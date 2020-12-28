@@ -37,7 +37,7 @@ export default {
     m_remove() {
       console.log('clicked');
       // this.visible = false;
-      this.$store.commit('cart_remove')
+      this.$store.dispatch('cartRemove')
     },
   },
 };

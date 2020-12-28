@@ -1,6 +1,9 @@
 export default {
-    addToCart({ commit }, qty) {
-        commit('CART_ADD', qty)
+    addToCart({ commit }, id) {
+        commit('CART_ADD', id)
+    },
+    removeFromCart({ commit }, id) {
+        commit('CART_REMOVE', id)
     },
     emptyCart({ commit }) {
         commit('CART_EMPTY')

@@ -27,7 +27,7 @@
           class="ml-2"
           _icon="bag-check"
           _icon-hovered="bag-check-fill"
-          :_badgeLabel="data_cart_item"
+          :_badgeLabel="cartDataTotal"
           v-b-toggle.sidebar-right
         />
         <c-sidebar :_id="'sidebar-right'" />
@@ -117,7 +117,7 @@ export default {
 
   computed: {
     ...mapState({
-      data_cart_item: (state) => state.cartItem,
+      cartDataTotal: (state) => state.userData.cartData.length,
       // data_product_search_query: state => state.productSearchQuery
     }),
     data_product_search_query: {

@@ -5,6 +5,6 @@ export default {
     email: null,
     password: null,
     latestSession: null,
-    cartData: {}
+    cartData: []
   }
 }
