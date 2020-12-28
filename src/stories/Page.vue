@@ -25,7 +25,7 @@ import "./page.css";
 import CHeader from "./Header.vue";
 import CFooter from "./Footer.vue";
 import CCard from "./Card.vue";
-import productJSON from "../assets/products.json";
+// import productJSON from "../assets/products.json";
 
 export default {
   name: "my-page",
@@ -37,7 +37,7 @@ export default {
   },
   data() {
     return {
-      productList: productJSON,
+
     };
   },
 
@@ -47,7 +47,8 @@ export default {
     },
     productResult: function () {
       const sq = this.search_query.toLowerCase();
-      return this.productList.data.filter(function (data) {
+      var productList= this.$globals.props.productsDummy
+      return productList.data.filter(function (data) {
         return data.name.toLowerCase().includes(sq);
       });
     },

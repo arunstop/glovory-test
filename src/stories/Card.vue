@@ -7,9 +7,10 @@
       <p class="mt-1">{{ productData.name }}</p>
       <p class="c-text-primary mb-0 mt-auto">{{ productData.priceLabel }}</p>
     </div>
+    <!-- click.stop prevent parent being clicked as children being clicked  -->
     <b-button
       class="c-c-primary c-btn-round c-fw500 mt-auto"
-      @click="
+      @click.stop="
         m_addTocart();
         m_toast();
       ">

@@ -47,6 +47,11 @@ const _default = (vueInstance) => ({
     apiKey1 : "",
     apiKey2 : "",
     logoUrl : "https://assets.website-files.com/5fafb178b3236f251c2ec605/5fafe519c3163b6fd26dd449_logo-color.svg",
+    //import json can be using :
+    // 1. require('example.json')
+    // OR
+    // 2. import Example from 'example.json' at the start of the file
+    productsDummy : require("../assets/products.json"),
     userData : {}
   },
   ui: {
