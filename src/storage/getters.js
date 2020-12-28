@@ -8,6 +8,17 @@ export default {
     },
     getUserData: (state) => {
         return state.userData;
+    },
+    isSignedIn: () => {
+        let email = localStorage.getItem('email')
+        let password = localStorage.getItem('password')
+        let latestSession = localStorage.getItem('latestSession')
+        if (email && password && latestSession ) {
+            return true;
+        } else {
+            return false
+        }
     }
+
 
 }

@@ -167,11 +167,11 @@ export default {
   },
   methods: {
     m_submit_sign_in() {
-        // alert(this.emailState + '&&' +this.passwordState)
+      // alert(this.emailState + '&&' +this.passwordState)
 
-      if(this.emailState == false || this.passwordState == false){
+      if (!this.emailState || !this.passwordState) {
         // alert('KAPPA')
-        return false
+        return false;
       }
       var newUserData = {
         email: this.emailInput,
@@ -217,6 +217,12 @@ export default {
       },
     },
   },
+  beforeCreate: function () {
+    if (this.$store.getters.isSignedIn === true) {
+      this.$router.replace("/");
+    }
+  },
+  created: function () {},
 };
 </script>
 

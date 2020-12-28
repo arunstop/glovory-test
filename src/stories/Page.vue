@@ -47,7 +47,7 @@ export default {
     },
     productResult: function () {
       const sq = this.search_query.toLowerCase();
-      var productList= this.$globals.props.productsDummy
+      var productList= this.$globals.props.productDummy
       return productList.data.filter(function (data) {
         return data.name.toLowerCase().includes(sq);
       });

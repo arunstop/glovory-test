@@ -51,7 +51,7 @@ const _default = (vueInstance) => ({
     // 1. require('example.json')
     // OR
     // 2. import Example from 'example.json' at the start of the file
-    productsDummy : require("../assets/products.json"),
+    productDummy : require("../assets/products.json"),
     userData : {}
   },
   ui: {

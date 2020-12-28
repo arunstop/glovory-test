@@ -2,9 +2,9 @@ export default {
     cartItem: 6,
     productSearchQuery: '',
     userData : {
-        email : '',
-        password : '',
-        latestSession : '',
+        email : null,
+        password : null,
+        latestSession : null,
         cartData : {}
       }
 }
