@@ -4,9 +4,19 @@
     variant="light"
     v-b-hover="hoverHandler"
   >
-    <b-badge class="c-badge c-c-primary font-font-weight-normal " variant="dark" pill v-if="_badgeLabel > 0 || _badgeLabel"> 
-      {{ _badgeLabel }}
-    </b-badge>
+   
+      <!-- using :key the same as the text value,
+      made the animation brought to life or use Math.random()-->
+      <b-badge
+        class="c-badge c-c-primary font-weight-bold animate__animated animate__swing animate__slower"
+        variant="dark"
+        pill
+        :key="_badgeLabel"
+        v-if="_badgeLabel > 0 || _badgeLabel"
+      >
+        {{ _badgeLabel }}
+      </b-badge>
+    
     <b-icon v-if="isHovered" :icon="_iconHovered" :aria-label="_iconHovered">
     </b-icon>
     <b-icon v-else :icon="_icon" :aria-label="_icon"></b-icon>
@@ -23,20 +33,20 @@ export default {
   props: {
     _icon: String,
     _iconHovered: String,
-    _badgeLabel: [String,Number],//can be number as well
+    _badgeLabel: [String, Number], //can be number as well
   },
   methods: {
     hoverHandler(hovered) {
       this.isHovered = hovered;
     },
-    m_show_badge(){
-      const bl= this._badgeLabel;
-      if(bl==7){
-        return true
-      }else{
-        return false
+    m_show_badge() {
+      const bl = this._badgeLabel;
+      if (bl == 7) {
+        return true;
+      } else {
+        return false;
       }
-    }
+    },
   },
 };
 </script>

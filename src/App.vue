@@ -28,10 +28,6 @@ export default {
   
 }
 
-@keyframes animate__animated {
-    from, to { overflow: hidden !important; } 
-  }
-
 html,
 body {
   width: 100% !important;
@@ -126,5 +122,16 @@ body {
 
 .c-bg-translucent{
   background-color: rgba(245,246,248,0.6);
+}
+/* giving toast and animation */
+.b-toast{
+  animation: bounceIn ; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 300ms; /* don't forget to set a duration! */
+}
+
+/* giving modal and animation */
+.modal-content{
+  animation: zoomInUp ; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 300ms; /* don't forget to set a duration! */
 }
 </style>

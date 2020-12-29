@@ -13,7 +13,16 @@
       lazy
     >
       <template #default="{ hide }">
-        <div class="d-flex flex-column h-100 overflow-x-hidden">
+        <div
+          class="d-flex flex-column h-100 overflow-x-hidden position-relative"
+        >
+          <div class="position-fixed d-flex h-100 w-100 m-auto c-c-" v-if="data_cart.length === 0">
+            <div class="c-text-grey m-auto d-flex flex-column align-items-center ">
+            <b-icon class="display-3" icon="cart-x"></b-icon>
+            <h5 class="mt-3">Cart is empty...</h5>
+            </div>
+          </div>
+
           <div class="c-sidebar-header row m-0 p-3 align-items-center">
             <b-button
               type="button"
@@ -31,7 +40,7 @@
             </b>
             <b-button class="ml-auto" variant="light" @click="m_empty_cart1()">
               <!-- v-b-modal.modal-empty-cart -->
-              <u class="c-btn-clear-all"> Clear All </u>
+              <u class="c-text-grey"> Clear All </u>
             </b-button>
 
             <!-- with colon(:) u need to add '' -->
@@ -54,7 +63,7 @@
               :_id="item.productId.toString()"
             />
           </div>
-          <div class="c-sidebar-footer mt-auto p-3">
+          <div class="c-sidebar-footer p-3 container-fluid fixed-bottom">
             <b-button
               class="c-btn-round mt-auto d-flex justify-content-between p-3 c-c-primary"
               variant="danger"
@@ -66,7 +75,12 @@
               v-if="data_cart.length > 0"
             >
               <span class="my-auto">Purchase Order</span>
-              <h6 class="font-weight-bold my-auto">{{calculateTotalCart.label}}</h6>
+              <h6
+                class="font-weight-bold my-auto animate__animated animate__jello"
+                :key="Math.random()"
+              >
+                {{ calculateTotalCart.label }}
+              </h6>
             </b-button>
           </div>
         </div>
@@ -76,7 +90,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 import CCartItem from "./CartItem.vue";
 import CModal from "./Modal.vue";
 // import customToast from "./custom-toast";
@@ -88,7 +102,7 @@ export default {
     _id: String,
   },
   computed: {
-    ...mapGetters(['calculateTotalCart']),
+    ...mapGetters(["calculateTotalCart"]),
     data_cart() {
       return this.$store.state.cartData;
     },
@@ -105,12 +119,18 @@ export default {
     },
     purchaseHandler() {
       if (this.$store.getters.isSignedIn) {
-        this.$globals.ui.showToast("Logged in",{variant:'success'});
+        this.$store.dispatch("emptyCart");
+        this.$globals.ui.showToast(
+          "Transaction success, your order is being processed!",
+          { variant: "success" }
+        );
       } else {
-        this.$globals.ui.showToast("Authentication needed, please sign in",{variant:'success'});
+        this.$globals.ui.showToast("Authentication needed, please sign in", {
+          variant: "warning",
+        });
+        this.$router.push("/auth");
       }
-      console.log(this.calculateTotalCart)
-      
+      console.log(this.calculateTotalCart);
     },
     m_empty_cart() {
       this.$store.dispatch("emptyCart");
@@ -123,11 +143,14 @@ export default {
       //   this.$refs[this._id].hide();
       // };
       this.$globals.ui.showModal(
+        "Empty Cart",
         "All of your items in the cart will be removed and the action cannot be undone. Are you sure?",
         "success",
         () => {
           this.$store.dispatch("emptyCart");
-          this.$globals.ui.showToast("Cart has been emptied", {variant: 'success', });
+          this.$globals.ui.showToast("Cart has been emptied", {
+            variant: "success",
+          });
           //closing sidebar with reference
           this.$refs[this._id].hide();
         },
@@ -135,22 +158,32 @@ export default {
       );
     },
   },
-  created: function (){
+  created: function () {
     // console.log(this.$store.getters.calculateCartTotal)
-  }
+  },
 };
 </script>
 
 <style scoped>
-.overflow-x-hidden{
+.overflow-x-hidden {
   overflow-x: hidden;
+}
+
+.c-sidebar-content {
+  padding-bottom: 90px !important;
+}
+/* centering a position-fixed div */
+.c-cart-no-item {
+  top: 50%;
+  left: 25%;
+  right: 25%;
 }
 
 .c-sidebar-header {
   border-bottom: 1px solid #e4e9f2;
 }
 
-.c-btn-clear-all {
+.c-text-grey {
   color: #8f9bb3;
 }
 </style>

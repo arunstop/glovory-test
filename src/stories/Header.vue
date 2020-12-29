@@ -161,6 +161,7 @@ export default {
     },
     m_auth_sign_out() {
       this.$globals.ui.showModal(
+        "Sign Out",
         "Do you want to sign out from this session and account?",
         "success",
         () => {

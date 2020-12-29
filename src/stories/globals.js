@@ -67,9 +67,9 @@ const _default = (vueInstance) => ({
         append: false,
       })
     },
-    showModal(msg, okVariant, okAction, cancelAction){
-      vueInstance.$bvModal.msgBoxConfirm(msg, {
-        title: 'Confirmation',
+    showModal(title = 'Confirmation', message = 'Are you sure?', okVariant = 'success', okAction, cancelAction){
+      vueInstance.$bvModal.msgBoxConfirm(message, {
+        title: title,
         size: 'md',
         buttonSize: 'md',
         okVariant: okVariant,
