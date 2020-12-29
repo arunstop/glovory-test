@@ -240,7 +240,7 @@ export default {
 }
 .c-auth-bg {
   background-image: url("../assets/bg_supermarket.jpg");
-  background-size: cover;
+  background-size:auto ;
   background-repeat: no-repeat;
   background-position: center;
 }

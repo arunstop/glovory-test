@@ -5,7 +5,7 @@
         <img class="logo" :src="logoUrl" />
       </a>
       <!-- v-model.lazy is for after input.value changed -->
-      <input
+      <b-input
         type="text"
         class="input-search input-search-visibility"
         maxlength="256"
@@ -15,6 +15,7 @@
         id="Search"
         ref="searchbar"
         v-model="data_product_search_query"
+        debounce="600"
       />
 
       <div class="ml-auto row mr-0">

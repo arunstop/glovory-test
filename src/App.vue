@@ -134,4 +134,8 @@ body {
   animation: zoomInUp ; /* referring directly to the animation's @keyframe declaration */
   animation-duration: 300ms; /* don't forget to set a duration! */
 }
+
+.c-text-grey {
+  color: #8f9bb3;
+}
 </style>

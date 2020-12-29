@@ -76,7 +76,7 @@
             >
               <span class="my-auto">Purchase Order</span>
               <h6
-                class="font-weight-bold my-auto animate__animated animate__jello"
+                class="font-weight-bold my-auto animate__animated animate__heartBeat"
                 :key="Math.random()"
               >
                 {{ calculateTotalCart.label }}
@@ -181,9 +181,5 @@ export default {
 
 .c-sidebar-header {
   border-bottom: 1px solid #e4e9f2;
-}
-
-.c-text-grey {
-  color: #8f9bb3;
 }
 </style>

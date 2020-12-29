@@ -5,8 +5,19 @@
       @onLogout="onLogout"
       @onCreateAccount="onCreateAccount"
     />
+    <div
+      class="position-fixed d-flex h-100 w-100 m-auto"
+      v-if="productResult.length === 0"
+    >
+      <div class="c-text-grey m-auto d-flex flex-column align-items-center  animate__animated animate__swing" :key="Math.random()">
+        <b-icon class="display-3" icon="emoji-expressionless"></b-icon>
+        <h5 class="mt-3">No products found...</h5>
+      </div>
+    </div>
     <div class="content-wrapper">
-      <b-row class="w-layout-grid justify-content-around justify-content-xl-start">
+      <b-row
+        class="w-layout-grid justify-content-around justify-content-xl-start position-relative"
+      >
         <c-card
           class="clickable"
           @click.native="navProductDetails(product.id)"
@@ -36,9 +47,7 @@ export default {
     productData: { type: Object },
   },
   data() {
-    return {
-
-    };
+    return {};
   },
 
   computed: {
@@ -47,7 +56,7 @@ export default {
     },
     productResult: function () {
       const sq = this.search_query.toLowerCase();
-      var productList= this.$globals.props.productDummy
+      var productList = this.$globals.props.productDummy;
       return productList.data.filter(function (data) {
         return data.name.toLowerCase().includes(sq);
       });
@@ -64,14 +73,14 @@ export default {
     onCreateAccount() {
       this.$emit("onCreateAccount");
     },
-    navProductDetails(id){
+    navProductDetails(id) {
       //with NAME
       // this.$router.push({name: "product details", params:{id:id}})
-      
+
       //with PATH
       // using ` backtick/grave accent
-      this.$router.push({path: `/product/${id}`})
-    }
+      this.$router.push({ path: `/product/${id}` });
+    },
   },
 };
 </script>
@@ -100,6 +109,4 @@ export default {
   grid-column-gap: 16px;
   margin: 0px !important;
 }
-
-
 </style>
