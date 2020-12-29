@@ -181,7 +181,8 @@ export default {
       this.$store.dispatch("userSignIn", newUserData);
       var userData = this.$store.getters.getUserData;
       this.$globals.ui.showToast(
-        "Welcome to glovory mart " + userData.email + "!"
+        "Welcome to glovory mart " + userData.email + "!",
+        {variant:'success'}
       );
       if (this.$store.getters.isSignedIn) {
         this.$router.push("/");

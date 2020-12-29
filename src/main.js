@@ -7,11 +7,13 @@ import Vuex from 'vuex';
 import storage from './storage'
 import globals from './stories/globals';
 import router from './router'
+import {longClickDirective} from 'vue-long-click'
 
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(Vuex)
+Vue.directive('long-click', longClickDirective({delay:300,interval:120}))
 
 var localUserData = {
   email: localStorage.getItem('email'),

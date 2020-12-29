@@ -55,13 +55,14 @@ const _default = (vueInstance) => ({
     userData : {}
   },
   ui: {
-    showToast(msg) {
+    showToast(message, opt) {
       // alert('success');
-      vueInstance.$bvToast.toast(msg, {
+      vueInstance.$bvToast.toast(message, {
         title: "Notification",
-        variant: "success",
+        toaster: 'b-toaster-bottom-center',
+        variant: opt.variant,
         solid: true,
-        noHoverPause: true,
+        noHoverPause: false,
         autoHideDelay: 1200,
         append: false,
       })

@@ -5,6 +5,7 @@ export default {
     email: null,
     password: null,
     latestSession: null,
-    cartData: []
-  }
+  },
+  cartData: [],
+  productDummy: require('../assets/products.json')
 }

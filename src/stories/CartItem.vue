@@ -8,9 +8,23 @@
         <div class="d-block">
           <p class="mt-0 c-max-lines-2">{{ productData.name }}</p>
           <div class="d-flex mt-3">
-            <b-button class="c-btn-qty" variant="outline-secondary" @click="m_minus_qty">-</b-button>
+            <b-button
+              class="c-btn-qty"
+              variant="outline-secondary"
+              @click="m_minus_qty"
+              v-long-click="m_minus_qty"
+            >
+              -
+            </b-button>
             <b class="c-item-qty my-auto">{{ productQtyCart }}</b>
-            <b-button class="c-btn-qty" variant="outline-secondary" @click="m_plus_qty">+</b-button>
+            <b-button
+              class="c-btn-qty"
+              variant="outline-secondary"
+              @click="m_plus_qty"
+              v-long-click="m_plus_qty"
+            >
+              +
+            </b-button>
           </div>
         </div>
       </div>
@@ -62,10 +76,10 @@ export default {
       this.$store.dispatch("removeFromCart", this._id);
     },
     m_minus_qty() {
-      this.$store.dispatch('minusCartItemQty', this._id)
+      this.$store.dispatch("minusCartItemQty", this._id);
     },
     m_plus_qty() {
-      this.$store.dispatch('plusCartItemQty', this._id)
+      this.$store.dispatch("plusCartItemQty", this._id);
     },
   },
   created: function () {

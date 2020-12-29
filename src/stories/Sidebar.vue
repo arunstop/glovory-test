@@ -63,7 +63,7 @@
               v-if="data_cart.length > 0"
             >
               <span class="my-auto">Purchase Order</span>
-              <h6 class="font-weight-bold my-auto">Rp 28.000</h6>
+              <h6 class="font-weight-bold my-auto">{{calculateTotalCart.label}}</h6>
             </b-button>
           </div>
         </div>
@@ -73,6 +73,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import CCartItem from "./CartItem.vue";
 import CModal from "./Modal.vue";
 // import customToast from "./custom-toast";
@@ -84,8 +85,9 @@ export default {
     _id: String,
   },
   computed: {
+    ...mapGetters(['calculateTotalCart']),
     data_cart() {
-      return this.$store.state.userData.cartData;
+      return this.$store.state.cartData;
     },
   },
   methods: {
@@ -99,11 +101,13 @@ export default {
       }
     },
     purchaseHandler() {
-      // console.log(this.$root);
-      // globalUi.showToast(this.$root.$bvToast, "Cart has been emptied", {variant: "danger",});
-      // customToast()
-      // console.log(this.$globals.methods)
-      // this.$globals.ui.showToast('Cart has been emptied')
+      if (this.$store.getters.isSignedIn) {
+        this.$globals.ui.showToast("Logged in",{variant:'success'});
+      } else {
+        this.$globals.ui.showToast("Authentication needed, please sign in",{variant:'success'});
+      }
+      console.log(this.calculateTotalCart)
+      
     },
     m_empty_cart() {
       this.$store.dispatch("emptyCart");
@@ -112,7 +116,6 @@ export default {
       // accessing global variable via this.$globals
       // var okAct = () => {
       //   this.$store.dispatch("emptyCart");
-      //   this.$globals.ui.showToast("Cart has been emptied");
       //   //closing sidebar with reference
       //   this.$refs[this._id].hide();
       // };
@@ -121,7 +124,7 @@ export default {
         "success",
         () => {
           this.$store.dispatch("emptyCart");
-          this.$globals.ui.showToast("Cart has been emptied");
+          this.$globals.ui.showToast("Cart has been emptied", {variant: 'success', });
           //closing sidebar with reference
           this.$refs[this._id].hide();
         },
@@ -129,6 +132,9 @@ export default {
       );
     },
   },
+  created: function (){
+    // console.log(this.$store.getters.calculateCartTotal)
+  }
 };
 </script>
 

@@ -11,8 +11,9 @@
         maxlength="256"
         name="Search"
         data-name="Search"
-        placeholder="Search products"
+        placeholder="Search products..."
         id="Search"
+        ref="searchbar"
         v-model="data_product_search_query"
       />
 
@@ -52,11 +53,10 @@
           <b-dropdown-item>Preferences</b-dropdown-item>
           <b-dropdown-item>Help</b-dropdown-item>
           <b-dropdown-divider></b-dropdown-divider>
-          <b-dropdown-item @click="m_auth_sign_out"
-            ><b-icon icon="box-arrow-left" /><b class="ml-2"
-              >Sign out</b
-            ></b-dropdown-item
-          >
+          <b-dropdown-item @click="m_auth_sign_out">
+            <b-icon icon="box-arrow-left" />
+            <b class="ml-2"> Sign out </b>
+          </b-dropdown-item>
         </b-dropdown>
       </div>
 
@@ -67,11 +67,11 @@
         <b-input-group>
           <b-form-input
             type="search"
-            class="input-search mx-0"
+            class="c-input-search2nd input-search mx-0 mw-100"
             maxlength="256"
             name="Search2nd"
             data-name="Search2nd"
-            placeholder="Search products"
+            placeholder="Search products..."
             id="Search2nd"
             v-model="data_product_search_query"
             lazy
@@ -117,7 +117,7 @@ export default {
 
   computed: {
     ...mapState({
-      cartDataTotal: (state) => state.userData.cartData.length,
+      cartDataTotal: (state) => state.cartData.length,
       // data_product_search_query: state => state.productSearchQuery
     }),
     data_product_search_query: {
@@ -179,10 +179,18 @@ export default {
       // alert(this.showSearchBar2nd)
     },
   },
+  created: function(){
+    // console.log(this.$store.state.cartData.length)
+  }
 };
 </script>
 
 <style scoped>
+/* 
+.c-input-search2nd {
+  max-width: 100% !important;
+} */
+
 .btn-icon-search {
   display: none;
 }

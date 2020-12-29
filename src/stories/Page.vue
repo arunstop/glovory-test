@@ -6,7 +6,7 @@
       @onCreateAccount="onCreateAccount"
     />
     <div class="content-wrapper">
-      <b-row class="w-layout-grid">
+      <b-row class="w-layout-grid justify-content-around justify-content-xl-start">
         <c-card
           class="clickable"
           @click.native="navProductDetails(product.id)"
@@ -100,4 +100,6 @@ export default {
   grid-column-gap: 16px;
   margin: 0px !important;
 }
+
+
 </style>

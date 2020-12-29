@@ -1,10 +1,12 @@
+// import globals form '../stories/globals'
+
 export default {
     PRODUCT_SEARCH(state, query) {
-        state.productSearchQuery = query
+        state.productSearchQuery = query.trim()
         // console.log(query)
     },
     CART_ADD(state, productId) {
-        let itemList = state.userData.cartData
+        let itemList = state.cartData
         if (itemList.length === 0) {
             itemList.push({ productId: productId, qty: 1 })
         } else {
@@ -21,25 +23,40 @@ export default {
         }
     },
     CART_REMOVE(state, productId) {
-        let itemList = state.userData.cartData
-        state.userData.cartData = itemList.filter(a => a.productId != productId)
+        let itemList = state.cartData
+        state.cartData = itemList.filter(a => a.productId != productId)
     },
     CART_EMPTY(state) {
-        state.userData.cartData = []
+        state.cartData = []
     },
     CART_MINUS_ITEM_QTY(state, productId) {
-        let itemList = state.userData.cartData
+        let itemList = state.cartData
         let itemResult = itemList.filter(a => a.productId === productId)[0]
         if (itemResult.qty > 1) {
             itemResult.qty--
         }
     },
     CART_PLUS_ITEM_QTY(state, productId) {
-        let itemList = state.userData.cartData
+        let itemList = state.cartData
         let itemResult = itemList.filter(a => a.productId === productId)[0]
         if (itemResult.qty < 10) {
             itemResult.qty++
         }
+    },
+    CART_CALCULATE_TOTAL(state){
+        let itemList = state.cartData;
+        let productList = state.productDummy.data
+        let itemPrice = itemList.map(
+            a => {
+                let productQty = productList.find(product => product.id === a.productId)
+                return a.qty * productQty.price
+            }
+        )
+        let totalPrice = 0
+        itemPrice.map(
+            price => { return totalPrice += price }
+        )
+        return totalPrice;
     },
     USER_SIGN_IN(state, newUserData) {
         state.userData = newUserData
