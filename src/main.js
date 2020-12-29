@@ -8,6 +8,7 @@ import storage from './storage'
 import globals from './stories/globals';
 import router from './router'
 import {longClickDirective} from 'vue-long-click'
+import 'animate.css'
 
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)

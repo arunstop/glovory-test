@@ -1,5 +1,5 @@
 <template>
-  <div class="c-card ani-bounce-in">
+  <div class="c-card ani-bounce-in animate__animated animate__bounce">
     <div class="c-product-thumbnail">
       <img class="c-product-img" :src="productData.src" />
     </div>

@@ -45,6 +45,9 @@
             />
           </div>
           <div class="c-sidebar-content column p-3">
+            <!-- using item.id as key resulted an issue on transition which is:
+            only the last element will be deleted
+             -->
             <c-cart-item
               v-for="item in data_cart"
               :key="item"

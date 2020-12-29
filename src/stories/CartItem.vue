@@ -1,6 +1,9 @@
 <template>
-  <transition name="bounce-in">
-    <div class="d-flex c-cart-wrapper py-3" :id="_id" v-if="visible">
+  <transition
+    enter-active-class="animate__animated animate__bounceInLeft"
+    leave-active-class="animate__animated animate__bounceOutRight"
+  >
+    <div class="d-flex c-cart-wrapper py-3" :id="_id">
       <div class="c-cart-left">
         <img class="c-cart-img" :src="productData.src" />
       </div>
@@ -48,9 +51,6 @@ export default {
     _id: String,
   },
   computed: {
-    visible() {
-      return true;
-    },
     ...mapGetters(["getCartData", "getCartDataById"]),
     productData() {
       let productList = this.$globals.props.productDummy;
@@ -68,8 +68,7 @@ export default {
   },
   methods: {
     m_remove() {
-      // console.log("clicked");
-      // this.visible = false;
+      
       this.$store.dispatch("removeFromCart", this._id);
     },
     m_minus_qty() {
@@ -85,10 +84,6 @@ export default {
 };
 </script>
 <style scoped>
-/* add this to bounce when opening sidebar */
-.ani-bounce-in {
-  animation: bounce-in 0.6s;
-}
 
 .c-max-lines-2 {
   overflow: hidden;
@@ -132,23 +127,5 @@ export default {
   width: 50%;
   margin-left: 20px !important;
   float: right !important;
-}
-/* animation */
-.bounce-in-enter-active {
-  animation: bounce-in 0.5s;
-}
-.bounce-in-leave-active {
-  animation: bounce-in 0.5s reverse;
-}
-@keyframes bounce-in {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
-  }
 }
 </style>

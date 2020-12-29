@@ -1,6 +1,12 @@
 <template>
   <div id="app">
+    <transition 
+    mode="out-in"
+    enter-active-class="animate__animated animate__fadeIn"
+    leave-active-class="animate__animated animate__fadeOut"
+    >
     <router-view/>
+    </transition>
   </div>
 </template>
 
@@ -32,6 +38,13 @@ body {
   overflow: auto;
 }
 
+.animate__animated.animate__fadeIn {
+  --animate-duration: 150ms !important;
+}
+.animate__animated.animate__fadeOut {
+  --animate-duration: 150ms !important;
+}
+
 #app {
   font-family: Rubik, sans-serif !important;
   /* font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; */
@@ -45,24 +58,6 @@ body {
   background-color: #f5f6f8;
   display: flex;
   /* removed animation because sometimes it lagged */
-  animation: fade-in 1.2s;
-}
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  30%{
-    opacity: 0.3;
-  }
-  60% {
-    opacity: 0.6;
-  }
-  90%{
-    opacity: 0.9;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 
 .c-btn-round {
