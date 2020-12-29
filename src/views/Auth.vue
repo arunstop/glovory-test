@@ -15,7 +15,7 @@
             <b-tab title="Sign in" active>
               <b-form @submit.prevent="m_submit_sign_in">
                 <h5>Welcome to</h5>
-                <h2 class="c-text-primary">GLOVORYMART</h2>
+                <h3 class="c-text-primary font-weight-bold">GLOVORYMART</h3>
                 <c-input
                   class="mt-5 w-100"
                   _withIcon
@@ -240,7 +240,7 @@ export default {
 }
 .c-auth-bg {
   background-image: url("../assets/bg_supermarket.jpg");
-  background-size:auto ;
+  background-size: cover ;
   background-repeat: no-repeat;
   background-position: center;
 }

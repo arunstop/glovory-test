@@ -5,27 +5,34 @@
       @onLogout="onLogout"
       @onCreateAccount="onCreateAccount"
     />
-    <div
-      class="position-fixed d-flex h-100 w-100 m-auto"
-      v-if="productResult.length === 0"
-    >
-      <div class="c-text-grey m-auto d-flex flex-column align-items-center  animate__animated animate__swing" :key="Math.random()">
-        <b-icon class="display-3" icon="emoji-expressionless"></b-icon>
-        <h5 class="mt-3">No products found...</h5>
-      </div>
-    </div>
-    <div class="content-wrapper">
-      <b-row
-        class="w-layout-grid justify-content-around justify-content-xl-start position-relative"
+
+    <div class="c-content-wrapper">
+      <!-- not found display -->
+      <div
+        class="position-fixed d-flex h-100 w-100 m-auto"
+        v-if="productResult.length === 0"
       >
-        <c-card
-          class="clickable"
-          @click.native="navProductDetails(product.id)"
-          v-for="product in productResult"
-          :key="product.id"
-          :productData="product"
-        />
-      </b-row>
+        <div
+          class="c-text-grey m-auto d-flex flex-column align-items-center animate__animated animate__swing"
+          :key="Math.random()"
+        >
+          <b-icon class="display-3" icon="emoji-expressionless"></b-icon>
+          <h5 class="mt-3">No products found...</h5>
+        </div>
+      </div>
+      <div class="c-content-list">
+        <b-row
+          class="w-layout-grid justify-content-around justify-content-xl-start position-relative"
+        >
+          <c-card
+            class="clickable"
+            @click.native="navProductDetails(product.id)"
+            v-for="product in productResult"
+            :key="product.id"
+            :productData="product"
+          />
+        </b-row>
+      </div>
     </div>
     <c-footer />
   </div>
@@ -94,9 +101,12 @@ export default {
   flex-direction: column;
 }
 
-.content-wrapper {
+.c-content-wrapper {
   padding-left: 40px;
   padding-right: 40px;
+}
+
+.c-content-list {
   padding-top: 120px;
 }
 

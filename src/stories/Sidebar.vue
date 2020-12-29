@@ -16,13 +16,6 @@
         <div
           class="d-flex flex-column h-100 overflow-x-hidden position-relative"
         >
-          <div class="position-fixed d-flex h-100 w-100 m-auto c-c-" v-if="data_cart.length === 0">
-            <div class="c-text-grey m-auto d-flex flex-column align-items-center ">
-            <b-icon class="display-3" icon="cart-x"></b-icon>
-            <h5 class="mt-3">Cart is empty...</h5>
-            </div>
-          </div>
-
           <div class="c-sidebar-header row m-0 p-3 align-items-center">
             <b-button
               type="button"
@@ -53,35 +46,48 @@
               :_ok_action="[m_empty_cart, purchaseHandler, hide]"
             />
           </div>
-          <div class="c-sidebar-content column p-3">
-            <!-- using item.id as key resulted an issue on transition which is:
+          <div
+            class="d-flex h-100 w-100 m-auto c-c-"
+            v-if="data_cart.length === 0"
+          >
+            <div
+              class="c-text-grey m-auto d-flex flex-column align-items-center"
+            >
+              <b-icon class="display-3" icon="cart-x"></b-icon>
+              <h5 class="mt-3">Cart is empty...</h5>
+            </div>
+          </div>
+          <div class="d-flex flex-column" v-else>
+            <div class="c-sidebar-content column p-3">
+              <!-- using item.id as key resulted an issue on transition which is:
             only the last element will be
              -->
-            <c-cart-item
-              v-for="item in data_cart"
-              :key="item"
-              :_id="item.productId.toString()"
-            />
-          </div>
-          <div class="c-sidebar-footer p-3 container-fluid fixed-bottom">
-            <b-button
-              class="c-btn-round mt-auto d-flex justify-content-between p-3 c-c-primary"
-              variant="danger"
-              block
-              @click="
-                hide();
-                purchaseHandler();
-              "
-              v-if="data_cart.length > 0"
-            >
-              <span class="my-auto">Purchase Order</span>
-              <h6
-                class="font-weight-bold my-auto animate__animated animate__heartBeat"
-                :key="Math.random()"
+              <c-cart-item
+                v-for="item in data_cart"
+                :key="item.productId"
+                :_id="item.productId.toString()"
+              />
+            </div>
+            <div class="c-sidebar-footer p-3 container-fluid fixed-bottom">
+              <b-button
+                class="c-btn-round mt-auto d-flex justify-content-between p-3 c-c-primary"
+                variant="danger"
+                block
+                @click="
+                  hide();
+                  purchaseHandler();
+                "
+                v-if="data_cart.length > 0"
               >
-                {{ calculateTotalCart.label }}
-              </h6>
-            </b-button>
+                <span class="my-auto">Purchase Order</span>
+                <h6
+                  class="font-weight-bold my-auto animate__animated animate__heartBeat"
+                  :key="Math.random()"
+                >
+                  {{ calculateTotalCart.label }}
+                </h6>
+              </b-button>
+            </div>
           </div>
         </div>
       </template>
@@ -103,6 +109,9 @@ export default {
   },
   computed: {
     ...mapGetters(["calculateTotalCart"]),
+    e_body() {
+      return document.getElementsByTagName("body")[0];
+    },
     data_cart() {
       return this.$store.state.cartData;
     },
@@ -110,11 +119,13 @@ export default {
   methods: {
     //make body unscrollable when sidebar is shown
     unscrollableBody(visible) {
-      const e_body = document.getElementsByTagName("body")[0];
+      // const e_body = document.getElementsByTagName("body")[0];
       if (visible) {
-        e_body.classList.add("overflow-hidden");
+        // alert("hidden");
+        this.e_body.classList.add("overflow-hidden");
       } else {
-        e_body.classList.remove("overflow-hidden");
+        // alert("auto");
+        this.e_body.classList.remove("overflow-hidden");
       }
     },
     purchaseHandler() {
@@ -128,6 +139,8 @@ export default {
         this.$globals.ui.showToast("Authentication needed, please sign in", {
           variant: "warning",
         });
+        alert("auto");
+        this.e_body.classList.remove("overflow-hidden");
         this.$router.push("/auth");
       }
       console.log(this.calculateTotalCart);
