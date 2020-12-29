@@ -13,8 +13,8 @@
       lazy
     >
       <template #default="{ hide }">
-        <div class="d-flex flex-column h-100">
-          <div class="c-sidebar-header row p-3 align-items-center">
+        <div class="d-flex flex-column h-100 overflow-x-hidden">
+          <div class="c-sidebar-header row m-0 p-3 align-items-center">
             <b-button
               type="button"
               class="close px-1"
@@ -46,7 +46,7 @@
           </div>
           <div class="c-sidebar-content column p-3">
             <!-- using item.id as key resulted an issue on transition which is:
-            only the last element will be deleted
+            only the last element will be
              -->
             <c-cart-item
               v-for="item in data_cart"
@@ -142,9 +142,10 @@ export default {
 </script>
 
 <style scoped>
-.row {
-  margin: 0px !important;
+.overflow-x-hidden{
+  overflow-x: hidden;
 }
+
 .c-sidebar-header {
   border-bottom: 1px solid #e4e9f2;
 }
