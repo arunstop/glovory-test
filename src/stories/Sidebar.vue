@@ -143,7 +143,7 @@ export default {
         this.e_body.classList.remove("overflow-hidden");
         this.$router.push("/auth");
       }
-      console.log(this.calculateTotalCart);
+      // console.log(this.calculateTotalCart);
     },
     m_empty_cart() {
       this.$store.dispatch("emptyCart");

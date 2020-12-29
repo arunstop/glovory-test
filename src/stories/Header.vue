@@ -167,7 +167,9 @@ export default {
         "success",
         () => {
           this.$store.dispatch("userSignOut");
-          // alert(userData)
+          this.$globals.ui.showToast("Sign out success, see you next time!", {
+            variant: "success",
+          });
         },
         () => {}
       );
