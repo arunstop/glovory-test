@@ -13,7 +13,7 @@ Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(Vuex)
-Vue.directive('long-click', longClickDirective({delay:300,interval:120}))
+Vue.directive('long-click', longClickDirective({delay:600,interval:120}))
 
 var localUserData = {
   email: localStorage.getItem('email'),

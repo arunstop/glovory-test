@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="d-flex c-cart-wrapper py-3 ani-bounce-in">
+  <transition name="bounce-in">
+    <div class="d-flex c-cart-wrapper py-3" :id="_id" v-if="visible">
       <div class="c-cart-left">
         <img class="c-cart-img" :src="productData.src" />
       </div>
@@ -33,13 +33,12 @@
         <b-button class="ml-auto" variant="light" @click="m_remove">
           <b-icon icon="trash-fill" style="color: #c5cee0" />
         </b-button>
-        <span
-          class="c-item-price ml-auto mt-auto text-block font-weight-bold"
-          >{{ productData.priceLabel }}</span
-        >
+        <span class="c-item-price ml-auto mt-auto text-block font-weight-bold">
+          {{ productData.priceLabel }}
+        </span>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 <script>
 import { mapGetters } from "vuex";
@@ -48,12 +47,10 @@ export default {
   props: {
     _id: String,
   },
-  data() {
-    return {
-      visible: true,
-    };
-  },
   computed: {
+    visible() {
+      return true;
+    },
     ...mapGetters(["getCartData", "getCartDataById"]),
     productData() {
       let productList = this.$globals.props.productDummy;

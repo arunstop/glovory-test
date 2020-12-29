@@ -47,7 +47,7 @@
           <div class="c-sidebar-content column p-3">
             <c-cart-item
               v-for="item in data_cart"
-              :key="item.id"
+              :key="item"
               :_id="item.productId.toString()"
             />
           </div>
