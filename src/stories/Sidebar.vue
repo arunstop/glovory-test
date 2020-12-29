@@ -139,7 +139,7 @@ export default {
         this.$globals.ui.showToast("Authentication needed, please sign in", {
           variant: "warning",
         });
-        alert("auto");
+        // alert("auto");
         this.e_body.classList.remove("overflow-hidden");
         this.$router.push("/auth");
       }
