@@ -38,7 +38,10 @@
                   v-model="dataPasswordInput"
                 />
                 <b-row class="m-0 mt-3">
-                  <a class="my-auto clickable">Forgot Password?</a>
+                  <a class="my-auto clickable" v-b-modal.reset-pass-modal>
+                    Forgot Password?
+                  </a>
+                  <c-auth-reset-password-modal :_id="'reset-pass-modal'" />
                   <b-form-checkbox class="ml-auto"
                     >Remember me!</b-form-checkbox
                   >
@@ -153,9 +156,10 @@
 <script>
 import CInput from "../stories/Input.vue";
 import CBackButton from "../stories/BackButton.vue";
+import CAuthResetPasswordModal from "./AuthResetPasswordModal.vue";
 
 export default {
-  components: { CInput, CBackButton },
+  components: { CInput, CBackButton, CAuthResetPasswordModal },
   data() {
     return {
       tabIndex: 1,
@@ -182,7 +186,7 @@ export default {
       var userData = this.$store.getters.getUserData;
       this.$globals.ui.showToast(
         "Welcome to glovory mart " + userData.email + "!",
-        {variant:'success'}
+        { variant: "success" }
       );
       if (this.$store.getters.isSignedIn) {
         this.$router.push("/");
@@ -240,7 +244,7 @@ export default {
 }
 .c-auth-bg {
   background-image: url("../assets/bg_supermarket.jpg");
-  background-size: cover ;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
