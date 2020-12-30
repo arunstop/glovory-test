@@ -43,7 +43,7 @@
               _message="All items in cart will be removed, are you sure?"
               :_ok_title="'Delete'"
               :_ok_variant="'danger'"
-              :_ok_action="[m_empty_cart, purchaseHandler, hide]"
+              :_ok_action="[m_empty_cart1, purchaseHandler, hide]"
             /> -->
           </div>
           <div
@@ -144,9 +144,6 @@ export default {
         this.$router.push("/auth");
       }
       // console.log(this.calculateCartTotalPrice);
-    },
-    m_empty_cart() {
-      this.$store.dispatch("emptyCart");
     },
     m_empty_cart1() {
       // accessing global variable via this.$globals

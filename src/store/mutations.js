@@ -41,7 +41,7 @@ export default {
     },
     CART_EMPTY(state) {
         state.cartData = []
-        storage.remove('cartItem')
+        storage.remove('cartData')
     },
     CART_MINUS_ITEM_QTY(state, productId) {
         let itemList = state.cartData
