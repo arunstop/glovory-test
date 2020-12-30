@@ -64,7 +64,7 @@
               </b-form>
             </b-tab>
             <b-tab title="Register">
-              <b-form>
+              <b-form @submit.prevent="m_submit_register">
                 <h5>Fill in the form to join us!</h5>
                 <c-input
                   class="mt-5 w-100"
@@ -124,6 +124,12 @@
                   :_type="'number'"
                   _required
                 />
+
+                <b-row class="mt-3 m-0">
+                  <b-form-checkbox name="tnc" required >
+                    I Agree With This <a href="#">Terms And Conditions.</a>
+                  </b-form-checkbox>
+                </b-row>
 
                 <b-button
                   type="submit"
@@ -192,6 +198,9 @@ export default {
         this.$router.push("/");
       }
     },
+    m_submit_register(){
+      
+    }
   },
   computed: {
     logoUrl() {

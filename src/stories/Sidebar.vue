@@ -155,15 +155,29 @@ export default {
       //   //closing sidebar with reference
       //   this.$refs[this._id].hide();
       // };
+
+      let emptyCartHandler = () => {
+        let msg = "";
+        let variant = "";
+        if (this.data_cart.length === 0) {
+          msg = "Cart is already empty.";
+          variant = "warning";
+        } else {
+          msg = "Cart has been emptied!";
+          variant = "success";
+        }
+        this.$globals.ui.showToast(msg, {
+          variant: variant,
+        });
+      };
+
       this.$globals.ui.showModal(
         "Empty Cart",
         "All of your items in the cart will be removed and the action cannot be undone. Are you sure?",
         "success",
         () => {
           this.$store.dispatch("emptyCart");
-          this.$globals.ui.showToast("Cart has been emptied", {
-            variant: "success",
-          });
+          emptyCartHandler()
           //closing sidebar with reference
           this.$refs[this._id].hide();
         },
