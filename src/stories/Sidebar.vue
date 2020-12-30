@@ -37,14 +37,14 @@
             </b-button>
 
             <!-- with colon(:) u need to add '' -->
-            <c-modal
+            <!-- <c-modal
               :_id="'modal-empty-cart'"
               _title="Empty cart"
               _message="All items in cart will be removed, are you sure?"
               :_ok_title="'Delete'"
               :_ok_variant="'danger'"
               :_ok_action="[m_empty_cart, purchaseHandler, hide]"
-            />
+            /> -->
           </div>
           <div
             class="d-flex h-100 w-100 m-auto c-c-"
@@ -81,10 +81,10 @@
               >
                 <span class="my-auto">Purchase Order</span>
                 <h6
-                  class="font-weight-bold my-auto animate__animated animate__heartBeat"
+                  class="font-weight-bold my-auto animate__animated animate__bounceIn"
                   :key="Math.random()"
                 >
-                  {{ calculateTotalCart.label }}
+                  {{ calculateCartTotalPrice.label }}
                 </h6>
               </b-button>
             </div>
@@ -98,17 +98,17 @@
 <script>
 import { mapGetters } from "vuex";
 import CCartItem from "./CartItem.vue";
-import CModal from "./Modal.vue";
+// import CModal from "./Modal.vue";
 // import customToast from "./custom-toast";
 
 export default {
   name: "c-sidebar",
-  components: { CCartItem, CModal },
+  components: { CCartItem },
   props: {
     _id: String,
   },
   computed: {
-    ...mapGetters(["calculateTotalCart"]),
+    ...mapGetters(["calculateCartTotalPrice"]),
     e_body() {
       return document.getElementsByTagName("body")[0];
     },
@@ -143,7 +143,7 @@ export default {
         this.e_body.classList.remove("overflow-hidden");
         this.$router.push("/auth");
       }
-      // console.log(this.calculateTotalCart);
+      // console.log(this.calculateCartTotalPrice);
     },
     m_empty_cart() {
       this.$store.dispatch("emptyCart");
@@ -176,8 +176,8 @@ export default {
         "All of your items in the cart will be removed and the action cannot be undone. Are you sure?",
         "success",
         () => {
-          this.$store.dispatch("emptyCart");
           emptyCartHandler()
+          this.$store.dispatch("emptyCart");
           //closing sidebar with reference
           this.$refs[this._id].hide();
         },

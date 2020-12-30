@@ -50,14 +50,20 @@
               @click.native="m_auth"
             />
           </template>
-          <b-dropdown-item>Account Settings</b-dropdown-item>
-          <b-dropdown-item>Preferences</b-dropdown-item>
-          <b-dropdown-item>Help</b-dropdown-item>
-          <b-dropdown-divider></b-dropdown-divider>
-          <b-dropdown-item @click="m_auth_sign_out">
-            <b-icon icon="box-arrow-left" />
-            <b class="ml-2"> Sign out </b>
-          </b-dropdown-item>
+          <div class="animate__animated animate__lightSpeedInRight">
+            <b-dropdown-item disabled class="border-bottom">
+              <b-icon icon="person-fill" />
+              <b class="ml-2">{{ getUserData.email }}</b>
+            </b-dropdown-item>
+            <b-dropdown-item>Account Settings</b-dropdown-item>
+            <b-dropdown-item>Preferences</b-dropdown-item>
+            <b-dropdown-item>Help</b-dropdown-item>
+            <b-dropdown-divider></b-dropdown-divider>
+            <b-dropdown-item @click="m_auth_sign_out">
+              <b-icon icon="box-arrow-left" />
+              <b class="ml-2"> Sign out </b>
+            </b-dropdown-item>
+          </div>
         </b-dropdown>
       </div>
 
@@ -99,7 +105,7 @@ import "./global.css";
 import "./header.css";
 import CSidebar from "./Sidebar.vue";
 import CIconButton from "./IconButton.vue";
-import { mapState } from "vuex";
+import { mapGetters, mapState } from "vuex";
 
 export default {
   name: "my-header",
@@ -117,6 +123,7 @@ export default {
   },
 
   computed: {
+    ...mapGetters(["getUserData"]),
     ...mapState({
       cartDataTotal: (state) => state.cartData.length,
       // data_product_search_query: state => state.productSearchQuery
@@ -183,9 +190,9 @@ export default {
       // alert(this.showSearchBar2nd)
     },
   },
-  created: function(){
+  created: function () {
     // console.log(this.$store.state.cartData.length)
-  }
+  },
 };
 </script>
 

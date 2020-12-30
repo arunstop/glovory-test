@@ -125,7 +125,7 @@ body {
 }
 /* giving toast and animation */
 .b-toast{
-  animation: bounceIn ; /* referring directly to the animation's @keyframe declaration */
+  animation: rubberBand ; /* referring directly to the animation's @keyframe declaration */
   animation-duration: 300ms; /* don't forget to set a duration! */
   margin-bottom:40px;
 }

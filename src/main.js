@@ -4,7 +4,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Vuex from 'vuex';
-import storage from './storage'
+import storage from './store'
 import globals from './stories/globals';
 import router from './router'
 import {longClickDirective} from 'vue-long-click'

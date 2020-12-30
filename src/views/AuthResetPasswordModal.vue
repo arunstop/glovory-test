@@ -1,7 +1,6 @@
 <template>
   <b-modal :id="_id" title="Reset password" hide-footer centered>
     <b-col class="container-fluid p-3">
-      <h4>Enter your registered email:</h4>
       <p>
         We will send password request to your email, as long as it is
         <strong>registered</strong> before

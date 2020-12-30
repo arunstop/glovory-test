@@ -19,7 +19,7 @@
             >
               -
             </b-button>
-            <b class="c-item-qty my-auto">{{ productQtyCart }}</b>
+            <b class="c-item-qty my-auto">{{ ' '+productQtyCart+' ' }}</b>
             <b-button
               class="c-btn-qty"
               variant="outline-secondary"
@@ -37,7 +37,7 @@
           <b-icon icon="trash-fill" style="color: #c5cee0" />
         </b-button>
         <span class="c-item-price ml-auto mt-auto text-block font-weight-bold">
-          {{ productData.priceLabel }}
+          {{ itemPrice.label }}
         </span>
       </div>
     </div>
@@ -51,13 +51,13 @@ export default {
     _id: String,
   },
   computed: {
-    ...mapGetters(["getCartData", "getCartDataById"]),
+    ...mapGetters(["getCartData", "getCartDataById","calculateCartItemPrice"]),
     productData() {
       let productList = this.$globals.props.productDummy;
       let productListByParams = productList.data.filter(
         (a) => a.id === this._id
       );
-      // console.log(this.getCartDataById(this._id));
+      console.log(this.getCartDataById(this._id));
       //because .filter() returns an array
       //therefore getting the first index [0] is a must
       return productListByParams[0];
@@ -65,6 +65,9 @@ export default {
     productQtyCart() {
       return this.getCartDataById(this._id)[0].qty;
     },
+    itemPrice(){
+      return this.calculateCartItemPrice(this._id);
+    }
   },
   methods: {
     m_remove() {
