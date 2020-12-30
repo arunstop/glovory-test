@@ -1,14 +1,19 @@
 // import globals form '../stories/globals'
+import Vue from 'vue'
+import Vue2Storage from 'vue2-storage'
+
+Vue.use(Vue2Storage)
+var storage = Vue.$storage
 
 export default {
     PRODUCT_SEARCH(state, query) {
         state.productSearchQuery = query.trim()
         // console.log(query)
     },
-    CART_ADD(state, productId) {
+    CART_ADD(state, product) {
         let itemList = state.cartData
         if (itemList.length === 0) {
-            itemList.push({ productId: productId, qty: 1 })
+            itemList.push(product)
         } else {
             // checking if productId already exists
             // then product will not be added to cart
@@ -16,11 +21,19 @@ export default {
             // The .some() method tests whether at least one element in the 
             // array passes the test implemented by the provided function. 
             // It returns a Boolean value
-            if (!itemList.some(a => a.productId === productId)) {
+            if (!itemList.some(a => a.productId === product.productId)) {
                 // alert('no duplicates')
-                itemList.push({ productId: productId, qty: 1 })
+                itemList.push(product)
             }
         }
+        //adding it to storage
+        storage.set(
+            "cartData",
+            {
+              data: itemList,
+            },
+            { ttl: 60 * 60 * 24 * 1000 }
+          );
     },
     CART_REMOVE(state, productId) {
         let itemList = state.cartData
@@ -28,6 +41,7 @@ export default {
     },
     CART_EMPTY(state) {
         state.cartData = []
+        storage.remove('cartItem')
     },
     CART_MINUS_ITEM_QTY(state, productId) {
         let itemList = state.cartData
@@ -35,6 +49,13 @@ export default {
         if (itemResult.qty > 1) {
             itemResult.qty--
         }
+        storage.set(
+            "cartData",
+            {
+              data: itemList,
+            },
+            { ttl: 60 * 60 * 24 * 1000 }
+          );
     },
     CART_PLUS_ITEM_QTY(state, productId) {
         let itemList = state.cartData
@@ -42,6 +63,13 @@ export default {
         if (itemResult.qty < 10) {
             itemResult.qty++
         }
+        storage.set(
+            "cartData",
+            {
+              data: itemList,
+            },
+            { ttl: 60 * 60 * 24 * 1000 }
+          );
     },
     CART_CALCULATE_TOTAL(state){
         let itemList = state.cartData;

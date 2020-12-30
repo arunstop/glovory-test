@@ -45,8 +45,13 @@ export default {
   },
   methods: {
     m_addTocart() {
-      this.$store.dispatch("addToCart", this.productData.id);
-      this.$globals.ui.showToast("Succesfully added item to your cart!", {variant: 'success', })
+      this.$store.dispatch("addToCart", {
+        productId: this.productData.id,
+        qty: 1,
+      });
+      this.$globals.ui.showToast("Succesfully added item to your cart!", {
+        variant: "success",
+      });
     },
   },
 };

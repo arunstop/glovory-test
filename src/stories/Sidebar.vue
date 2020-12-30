@@ -65,7 +65,7 @@
               <c-cart-item
                 v-for="item in data_cart"
                 :key="item.productId"
-                :_id="item.productId.toString()"
+                :_id="item.productId"
               />
             </div>
             <div class="c-sidebar-footer p-3 container-fluid fixed-bottom">

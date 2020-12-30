@@ -17,6 +17,7 @@
     "vue": "^2.6.12",
     "vue-long-click": "0.0.4",
     "vue-router": "^3.2.0",
+    "vue2-storage": "^5.0.0",
     "vuex": "^3.6.0"
   },
   "devDependencies": {

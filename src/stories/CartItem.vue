@@ -57,7 +57,7 @@ export default {
       let productListByParams = productList.data.filter(
         (a) => a.id === this._id
       );
-      console.log(this.getCartDataById(this._id));
+      // console.log(this.getCartDataById(this._id));
       //because .filter() returns an array
       //therefore getting the first index [0] is a must
       return productListByParams[0];
@@ -71,7 +71,6 @@ export default {
   },
   methods: {
     m_remove() {
-      
       this.$store.dispatch("removeFromCart", this._id);
     },
     m_minus_qty() {

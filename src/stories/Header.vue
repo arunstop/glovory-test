@@ -31,6 +31,7 @@
           _icon-hovered="bag-check-fill"
           :_badgeLabel="cartDataTotal"
           v-b-toggle.sidebar-right
+          @click.native="test1"
         />
         <c-sidebar :_id="'sidebar-right'" />
 
@@ -148,15 +149,6 @@ export default {
   },
 
   methods: {
-    onLogin() {
-      this.$emit("onLogin");
-    },
-    onLogout() {
-      this.$emit("onLogout");
-    },
-    onCreateAccount() {
-      this.$emit("onCreateAccount");
-    },
     m_search_product(input) {
       this.$store.dispatch("searchProduct", input.target.value);
     },
@@ -189,6 +181,9 @@ export default {
       this.showSearchBar2nd = !this.showSearchBar2nd;
       // alert(this.showSearchBar2nd)
     },
+    test1(){
+      
+    }
   },
   created: function () {
     // console.log(this.$store.state.cartData.length)
