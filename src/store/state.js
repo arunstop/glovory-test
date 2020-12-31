@@ -9,5 +9,5 @@ export default {
   },
   cartData: [],
   productDummy: require('../assets/products.json'),
-  localStorage
+  localStorage : localStorage
 }
