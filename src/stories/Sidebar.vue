@@ -51,7 +51,8 @@
             v-if="data_cart.length === 0"
           >
             <div
-              class="c-text-grey m-auto d-flex flex-column align-items-center"
+              class="c-text-grey m-auto d-flex flex-column align-items-center animate__animated animate__swing fill"
+              :key="Math.random()"
             >
               <b-icon class="display-3" icon="cart-x"></b-icon>
               <h5 class="mt-3">Cart is empty...</h5>
@@ -153,33 +154,33 @@ export default {
       //   this.$refs[this._id].hide();
       // };
 
-      let emptyCartHandler = () => {
-        let msg = "";
-        let variant = "";
-        if (this.data_cart.length === 0) {
-          msg = "Cart is already empty.";
-          variant = "warning";
-        } else {
-          msg = "Cart has been emptied!";
-          variant = "success";
-        }
+      let msg = "";
+      let variant = "";
+      if (this.data_cart.length === 0) {
+        msg = "Cart is already empty.";
+        variant = "warning";
         this.$globals.ui.showToast(msg, {
           variant: variant,
         });
-      };
+      } else {
+        msg = "Cart has been emptied!";
+        variant = "success";
 
-      this.$globals.ui.showModal(
-        "Empty Cart",
-        "All of your items in the cart will be removed and the action cannot be undone. Are you sure?",
-        "success",
-        () => {
-          emptyCartHandler()
-          this.$store.dispatch("emptyCart");
-          //closing sidebar with reference
-          this.$refs[this._id].hide();
-        },
-        () => {}
-      );
+        this.$globals.ui.showModal(
+          "Empty Cart",
+          "All of your items in the cart will be removed and the action cannot be undone. Are you sure?",
+          "success",
+          () => {
+            this.$store.dispatch("emptyCart");
+            this.$globals.ui.showToast(msg, {
+              variant: variant,
+            });
+            //closing sidebar with reference
+            this.$refs[this._id].hide();
+          },
+          () => {}
+        );
+      }
     },
   },
   created: function () {

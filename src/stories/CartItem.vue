@@ -8,8 +8,8 @@
         <img class="c-cart-img" :src="productData.src" />
       </div>
       <div class="c-cart-center mr-auto">
-        <div class="d-block">
-          <p class="mt-0 c-max-lines-2">{{ productData.name }}</p>
+        <div class="d-flex flex-column">
+          <p class="my-0 c-item-label">{{ productData.name }}</p>
           <div class="d-flex mt-3">
             <b-button
               class="c-btn-qty"
@@ -87,12 +87,13 @@ export default {
 </script>
 <style scoped>
 
-.c-max-lines-2 {
+.c-item-label {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 4; /* number of lines to show */
   -webkit-box-orient: vertical;
+  min-height: 48px !important;
 }
 
 .c-cart-wrapper {

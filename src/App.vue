@@ -126,14 +126,14 @@ body {
 /* giving toast and animation */
 .b-toast{
   animation: rubberBand ; /* referring directly to the animation's @keyframe declaration */
-  animation-duration: 300ms; /* don't forget to set a duration! */
+  animation-duration: 600ms; /* don't forget to set a duration! */
   margin-bottom:40px;
 }
 
 /* giving modal and animation */
 .modal-content{
   animation: zoomInUp ; /* referring directly to the animation's @keyframe declaration */
-  animation-duration: 300ms; /* don't forget to set a duration! */
+  animation-duration: 600ms; /* don't forget to set a duration! */
 }
 
 .c-text-grey {

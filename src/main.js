@@ -11,18 +11,13 @@ import globals from './stories/globals';
 import router from './router'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import { longClickDirective } from 'vue-long-click'
-import { Vue2Storage, } from 'vue2-storage'
 
 
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(Vuex)
-Vue.use(Vue2Storage, {
-  prefix: 'app_',
-  driver: 'local',
-  ttl: 60 * 60 * 24 * 1000 // 24 hours
-})
+
 
 Vue.directive('long-click', longClickDirective({ delay: 600, interval: 120 }))
 

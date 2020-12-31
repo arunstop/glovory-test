@@ -1,10 +1,4 @@
-// import globals form '../stories/globals'
-import Vue from 'vue'
-import Vue2Storage from 'vue2-storage'
-
-Vue.use(Vue2Storage)
-var storage = Vue.$storage
-
+import local from './local'
 export default {
     PRODUCT_SEARCH(state, query) {
         state.productSearchQuery = query.trim()
@@ -27,21 +21,35 @@ export default {
             }
         }
         //adding it to storage
-        storage.set(
+        local.set(
             "cartData",
             {
-              data: itemList,
+                data: itemList,
             },
-            { ttl: 60 * 60 * 24 * 1000 }
-          );
+            // { ttl: 60 * 60 * 24 * 1000 }
+        );
     },
     CART_REMOVE(state, productId) {
+        //removing item from cart store
         let itemList = state.cartData
         state.cartData = itemList.filter(a => a.productId != productId)
+        //removing item from cart local store
+        local.set(
+            "cartData",
+            {
+                data: state.cartData,
+            },
+            // { ttl: 60 * 60 * 24 * 1000 }
+        );
+        //checking if the local storage is empty
+        //the data will be removed
+        if (local.get('cartData').data.length === 0) {
+            local.remove('cartData')
+        }
     },
     CART_EMPTY(state) {
         state.cartData = []
-        storage.remove('cartData')
+        local.remove('cartData')
     },
     CART_MINUS_ITEM_QTY(state, productId) {
         let itemList = state.cartData
@@ -49,13 +57,13 @@ export default {
         if (itemResult.qty > 1) {
             itemResult.qty--
         }
-        storage.set(
+        local.set(
             "cartData",
             {
-              data: itemList,
+                data: itemList,
             },
-            { ttl: 60 * 60 * 24 * 1000 }
-          );
+            // { ttl: 60 * 60 * 24 * 1000 }
+        );
     },
     CART_PLUS_ITEM_QTY(state, productId) {
         let itemList = state.cartData
@@ -63,15 +71,15 @@ export default {
         if (itemResult.qty < 10) {
             itemResult.qty++
         }
-        storage.set(
+        local.set(
             "cartData",
             {
-              data: itemList,
+                data: itemList,
             },
-            { ttl: 60 * 60 * 24 * 1000 }
-          );
+            // { ttl: 60 * 60 * 24 * 1000 }
+        );
     },
-    CART_CALCULATE_TOTAL(state){
+    CART_CALCULATE_TOTAL(state) {
         let itemList = state.cartData;
         let productList = state.productDummy.data
         let itemPrice = itemList.map(
