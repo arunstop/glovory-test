@@ -1,4 +1,4 @@
-import local from './local'
+// import local from './local'
 export default {
     PRODUCT_SEARCH(state, query) {
         state.productSearchQuery = query.trim()
@@ -21,7 +21,7 @@ export default {
             }
         }
         //adding it to storage
-        local.set(
+        state.localStorage.set(
             "cartData",
             {
                 data: itemList,
@@ -34,7 +34,7 @@ export default {
         let itemList = state.cartData
         state.cartData = itemList.filter(a => a.productId != productId)
         //removing item from cart local store
-        local.set(
+        state.localStorage.set(
             "cartData",
             {
                 data: state.cartData,
@@ -43,13 +43,13 @@ export default {
         );
         //checking if the local storage is empty
         //the data will be removed
-        if (local.get('cartData').data.length === 0) {
-            local.remove('cartData')
+        if (state.localStorage.get('cartData').data.length === 0) {
+            state.localStorage.remove('cartData')
         }
     },
     CART_EMPTY(state) {
         state.cartData = []
-        local.remove('cartData')
+        state.localStorage.remove('cartData')
     },
     CART_MINUS_ITEM_QTY(state, productId) {
         let itemList = state.cartData
@@ -57,7 +57,7 @@ export default {
         if (itemResult.qty > 1) {
             itemResult.qty--
         }
-        local.set(
+        state.localStorage.set(
             "cartData",
             {
                 data: itemList,
@@ -71,7 +71,7 @@ export default {
         if (itemResult.qty < 10) {
             itemResult.qty++
         }
-        local.set(
+        state.localStorage.set(
             "cartData",
             {
                 data: itemList,
@@ -96,11 +96,11 @@ export default {
     },
     USER_SIGN_IN(state, newUserData) {
         state.userData = newUserData
-        local.set('userData', newUserData)
+        state.localStorage.set('userData', newUserData)
     },
     USER_SIGN_OUT(state) {
         state.userData = {}
-        local.remove('userData')
+        state.localStorage.remove('userData')
     }
 
 }

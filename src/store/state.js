@@ -1,3 +1,5 @@
+import localStorage from './localStorage'
+
 export default {
   productSearchQuery: '',
   userData: {
@@ -6,5 +8,6 @@ export default {
     latestSession: null,
   },
   cartData: [],
-  productDummy: require('../assets/products.json')
+  productDummy: require('../assets/products.json'),
+  localStorage
 }
