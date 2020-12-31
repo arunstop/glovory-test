@@ -96,15 +96,11 @@ export default {
     },
     USER_SIGN_IN(state, newUserData) {
         state.userData = newUserData
-        localStorage.setItem('email', newUserData.email)
-        localStorage.setItem('password', newUserData.password)
-        localStorage.setItem('latestSession', newUserData.latestSession)
+        local.set('userData', newUserData)
     },
     USER_SIGN_OUT(state) {
         state.userData = {}
-        localStorage.removeItem('email')
-        localStorage.removeItem('password')
-        localStorage.removeItem('latestSession')
+        local.remove('userData')
     }
 
 }
