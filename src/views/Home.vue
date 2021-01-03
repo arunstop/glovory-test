@@ -8,7 +8,7 @@ import Page from "../stories/Page.vue";
 export default {
   name: "Home",
   components: {
-    Page
+    Page,
   },
   computed: {
     // normal way
@@ -22,7 +22,11 @@ export default {
     ...mapGetters(["generateId", "generateLongId", "getUserData"]),
   },
   created: function () {
-    
+    let searchQueryUrl = this.$route.query.search;
+    if (searchQueryUrl) {
+      this.$store.dispatch("searchProduct", searchQueryUrl);
+      // console.log(search);
+    }
   },
 };
 </script>

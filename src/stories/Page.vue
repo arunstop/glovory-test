@@ -21,8 +21,8 @@
         </div>
       </div>
       <div class="c-content-list">
-        <b-row
-          class="w-layout-grid justify-content-around justify-content-xl-start position-relative"
+        <div
+          class="w-layout-grid d-inline-flex flex-wrap justify-content-around justify-content-xl-start position-relative"
         >
           <c-card
             class="clickable"
@@ -31,7 +31,7 @@
             :key="product.id"
             :productData="product"
           />
-        </b-row>
+        </div>
       </div>
     </div>
     <c-footer />
