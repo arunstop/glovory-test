@@ -43,9 +43,9 @@ if (localUserData != null) {
 
 // add cart data if it exists in local storage
 var localCartData =vm.$storage.get('cartData', false)
-console.log(localCartData)
+// console.log(localCartData)
 
-if (localCartData === true) {
+if (localCartData != false) {
   // Adding cart data from local storage
   // console.log(vm.$storage.get('cartData').data)
   let cartData = vm.$storage.get('cartData').data
